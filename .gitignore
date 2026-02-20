@@ -1,1 +1,21 @@
+# macOS
 .DS_Store
+
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# tooling caches
+.vite/
+
+# env files
+.env
+.env.*
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
