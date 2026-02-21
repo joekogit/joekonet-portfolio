@@ -1,4 +1,4 @@
-import logo from '@/assets/209030329c349a917bbabb16de1552f7ce7c3476.png';
+import logo from '@/assets/joekonet.svg';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 

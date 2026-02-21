@@ -1,5 +1,5 @@
 import { Mail, Linkedin, MapPin, Globe } from 'lucide-react';
-import footerLogo from '@/assets/06b6e3de21288b7b6c88d251e9dd1f8719ab13b8.png';
+import footerLogo from '@/assets/joekonet-bw.svg';
 
 export function Footer() {
   return (
