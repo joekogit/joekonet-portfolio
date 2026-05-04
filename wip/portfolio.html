@@ -1,0 +1,1657 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Joe Kocovsky — Senior Design Engineer</title>
+<meta name="description" content="Joe Kocovsky — Senior Design Engineer. Twenty years building consumer web UI and design systems at Peacock, Amount, VSA Partners, Crate & Barrel." />
+
+<!--
+  PORTFOLIO — JOE KOCOVSKY · v2
+  Palette: Wonjyou-inspired — onyx black, bone cream, coral signal, amber accent.
+  Type:    Modern Utility Stack — Inter (body/UI) + Playfair Display (headings).
+  Sections: each opens with a numbered chapter slate (full-bleed) so the
+            page reads as a sequence of distinct rooms, not one long scroll.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+:root{
+  /* WONJYOU-INSPIRED — onyx, bone, coral, amber */
+  --onyx:#0E0E0E;
+  --onyx-2:#161616;
+  --onyx-3:#1F1F1F;
+  --bone:#F2E7D0;
+  --bone-2:#E8DCC2;
+  --bone-mute:rgba(242,231,208,0.65);
+  --bone-soft:rgba(242,231,208,0.12);
+  --coral:#FF5544;
+  --coral-2:#E54836;
+  --amber:#F2A23B;
+  --teal:#3B6E6E;
+
+  --rule: rgba(242,231,208,0.14);
+  --rule-strong: rgba(242,231,208,0.32);
+
+  --display: "Playfair Display", "Times New Roman", serif;
+  --sans: "Inter", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --pad: clamp(20px, 4vw, 64px);
+  --header-h: 56px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--onyx);color:var(--bone);}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  font-size:16px;line-height:1.55;
+  font-weight:400;
+  letter-spacing:-0.005em;
+  overflow-x:hidden;
+  text-wrap:pretty;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+::selection{background:var(--coral);color:var(--bone)}
+
+/* TYPE */
+.display, h1, h2, h3, h4{
+  font-family:var(--display);
+  font-weight:600;
+  line-height:0.98;
+  letter-spacing:-0.02em;
+  color:var(--bone);
+}
+.display em, h1 em, h2 em, h3 em, h4 em{
+  font-style:italic;
+  color:var(--coral);
+  font-weight:500;
+}
+.mono, .meta{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--bone-mute);
+  font-weight:500;
+}
+
+/* HEADER */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 var(--pad);
+  height:var(--header-h);
+  font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--bone);
+  background:rgba(14,14,14,0.78);
+  backdrop-filter:blur(14px) saturate(1.1);
+  -webkit-backdrop-filter:blur(14px) saturate(1.1);
+  border-bottom:1px solid var(--rule);
+}
+.header-mark{display:flex;gap:14px;align-items:center}
+.header-mark .dot{width:10px;height:10px;background:var(--coral);border-radius:50%;display:inline-block}
+.header-mark b{font-weight:600;letter-spacing:0.06em}
+.header-mark .sep{opacity:0.4}
+.header-nav{display:flex;gap:22px}
+.header-nav a{opacity:.6;transition:opacity .2s, color .2s}
+.header-nav a:hover{opacity:1;color:var(--coral)}
+@media (max-width:780px){
+  .header-nav{display:none}
+  :root{--header-h:48px}
+}
+
+/* SECTION CHROME — every major section opens with a slate */
+.slate{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  align-items:end;
+  padding:36px var(--pad) 28px;
+  border-top:1px solid var(--bone);
+  border-bottom:1px solid var(--rule);
+  background:var(--onyx);
+}
+.slate .num{
+  grid-column:1/3;
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:clamp(40px,5vw,72px);line-height:0.9;letter-spacing:-0.02em;
+  color:var(--coral);
+}
+.slate .label{
+  grid-column:3/8;
+  font-family:var(--mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--bone);
+}
+.slate .label small{display:block;color:var(--bone-mute);margin-top:6px;font-size:10px;letter-spacing:0.12em}
+.slate .meta-r{
+  grid-column:10/13;text-align:right;
+  font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bone-mute);line-height:1.6;
+}
+@media (max-width:780px){
+  .slate{padding:24px var(--pad) 18px;gap:12px}
+  .slate .num{grid-column:1/4;font-size:44px}
+  .slate .label{grid-column:5/9}
+  .slate .meta-r{grid-column:9/13}
+}
+
+/* === HERO === */
+.hero{
+  min-height:100svh;
+  padding:calc(var(--header-h) + 40px) var(--pad) 40px;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  position:relative;
+  background:var(--onyx);
+}
+.hero-meta{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--rule);
+}
+.hero-meta-item{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;line-height:1.5}
+.hero-meta-item b{display:block;color:var(--bone-mute);font-weight:500;margin-bottom:6px;font-size:10px}
+.hero-meta-item.c1{grid-column:1/4}
+.hero-meta-item.c2{grid-column:4/7}
+.hero-meta-item.c3{grid-column:7/10}
+.hero-meta-item.c4{grid-column:10/13;text-align:right}
+.hero-meta-item .live{color:var(--coral)}
+@media (max-width:780px){
+  .hero-meta{grid-template-columns:1fr 1fr;gap:16px;padding-bottom:24px}
+  .hero-meta-item.c1,.hero-meta-item.c2,.hero-meta-item.c3,.hero-meta-item.c4{grid-column:auto;text-align:left}
+}
+
+.hero-statement{
+  padding:60px 0 40px;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:clamp(56px, 11vw, 200px);
+  line-height:0.92;
+  letter-spacing:-0.035em;
+}
+.hero-statement .line{display:block;overflow:hidden;padding-bottom:0.18em;margin-bottom:-0.18em}
+.hero-statement .line span{display:inline-block;will-change:transform}
+.hero-statement em{font-style:italic;color:var(--coral);font-weight:500}
+.hero-statement .indent{padding-left:1ch}
+.hero-statement .double-indent{padding-left:5ch}
+@media (max-width:1024px){
+  .hero-statement .double-indent{padding-left:2ch}
+}
+@media (max-width:780px){
+  .hero-statement{padding:32px 0 24px;font-size:clamp(40px,12vw,80px)}
+  .hero-statement .indent,.hero-statement .double-indent{padding-left:0}
+  .hero-statement .line{padding-bottom:0.22em;margin-bottom:-0.22em}
+}
+
+.hero-foot{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding-top:24px;border-top:1px solid var(--rule);
+  align-items:end;
+}
+.hero-foot-l{
+  grid-column:1/7;
+  font-size:clamp(15px,1.4vw,18px);
+  line-height:1.5;
+  max-width:50ch;
+  color:var(--bone-mute);
+}
+.hero-foot-l b{color:var(--bone);font-weight:500}
+.hero-foot-r{grid-column:9/13;display:flex;flex-direction:column;gap:6px;align-items:flex-end;text-align:right}
+.scroll-cue{
+  font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.16em;
+  display:inline-flex;gap:8px;align-items:center;color:var(--bone-mute);padding-top:14px;
+}
+.scroll-cue .arrow{display:inline-block;width:1px;height:18px;background:var(--bone);position:relative}
+.scroll-cue .arrow::after{content:"";position:absolute;bottom:0;left:-3px;width:7px;height:7px;border-right:1px solid var(--bone);border-bottom:1px solid var(--bone);transform:rotate(45deg)}
+@media (max-width:780px){
+  .hero-foot-l,.hero-foot-r{grid-column:1/-1;align-items:flex-start;text-align:left;gap:8px}
+}
+
+/* === GENERIC SECTION === */
+.section{
+  padding:80px var(--pad) 100px;
+  background:var(--onyx);
+}
+.section.alt{background:var(--onyx-2)}
+.section.bone{background:var(--bone);color:var(--onyx)}
+.section.bone .mono, .section.bone .meta{color:rgba(14,14,14,0.6)}
+.section.bone h2,.section.bone h3,.section.bone h4{color:var(--onyx)}
+
+@media (max-width:780px){
+  .section{padding:48px var(--pad) 56px}
+}
+
+/* === POSITIONING === */
+.pos-lede{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding-top:32px;
+}
+.pos-lede h2{
+  grid-column:1/10;
+  font-size:clamp(32px,5vw,72px);
+  line-height:1.05;
+  font-weight:500;
+}
+.pos-lede h2 em{font-style:italic;color:var(--coral)}
+.pos-aside{
+  grid-column:11/13;
+  font-family:var(--mono);font-size:11px;letter-spacing:0.08em;line-height:1.7;text-transform:uppercase;
+  border-top:1px solid var(--bone);padding-top:14px;align-self:end;color:var(--bone-mute);
+}
+.pos-aside b{display:block;color:var(--bone);font-weight:500;margin-bottom:8px}
+.pos-aside .now{color:var(--coral)}
+@media (max-width:780px){
+  .pos-lede h2,.pos-aside{grid-column:1/-1}
+  .pos-aside{margin-top:20px}
+}
+
+.pos-tags{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding-top:60px;margin-top:60px;border-top:1px solid var(--rule);
+}
+.pos-tag{grid-column:span 4;display:flex;flex-direction:column;gap:10px;padding-right:24px}
+.pos-tag .num{font-family:var(--mono);font-size:11px;color:var(--coral);letter-spacing:0.12em}
+.pos-tag h3{font-family:var(--display);font-size:24px;font-weight:600;line-height:1.2}
+.pos-tag p{font-size:14px;line-height:1.55;color:var(--bone-mute)}
+@media (max-width:780px){
+  .pos-tags{padding-top:32px;margin-top:32px;gap:24px}
+  .pos-tag{grid-column:1/-1;padding-right:0;padding-bottom:24px;border-bottom:1px solid var(--rule)}
+  .pos-tag:last-child{border-bottom:0;padding-bottom:0}
+}
+
+/* PORTRAIT */
+.portrait{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  align-items:center;padding-top:60px;margin-top:60px;border-top:1px solid var(--rule);
+}
+.portrait .img{grid-column:1/6;position:relative;border:1px solid var(--rule)}
+.portrait .img img{width:100%;display:block;filter:grayscale(1) contrast(1.05) brightness(0.85)}
+.portrait .img::after{content:"";position:absolute;inset:0;background:color-mix(in oklab, var(--coral) 14%, transparent);mix-blend-mode:multiply;pointer-events:none}
+.portrait .img::before{content:"FIG. 01 / J.K.";position:absolute;top:-22px;left:0;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bone-mute)}
+.portrait .copy{grid-column:7/13;display:flex;flex-direction:column;gap:20px}
+.portrait .big{font-family:var(--display);font-size:clamp(26px,3.4vw,42px);line-height:1.15;font-weight:500}
+.portrait .big em{font-style:italic;color:var(--coral)}
+.portrait p{font-size:15px;line-height:1.6;max-width:50ch;color:var(--bone-mute)}
+.taglist{display:flex;flex-wrap:wrap;gap:8px;padding-top:14px;border-top:1px solid var(--rule);margin-top:6px}
+.taglist span{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--rule-strong);color:var(--bone)}
+@media (max-width:780px){
+  .portrait{padding-top:32px;margin-top:32px;gap:24px}
+  .portrait .img,.portrait .copy{grid-column:1/-1}
+}
+
+/* === CASE STUDIES === */
+.case-head{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding:48px 0 32px;border-bottom:1px solid var(--rule);
+}
+.case-head .body{grid-column:1/12}
+.case-head .kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
+.case-head h2{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(40px,7vw,108px);line-height:0.98;letter-spacing:-0.025em;
+  margin-bottom:20px;
+}
+.case-head h2 em{font-style:italic;color:var(--coral);font-weight:500}
+.case-head .deck{
+  font-family:var(--display);font-size:clamp(18px,1.8vw,24px);line-height:1.4;font-weight:400;font-style:italic;
+  max-width:46ch;color:var(--bone-mute);
+}
+@media (max-width:780px){
+  .case-head{padding:24px 0 20px}
+  .case-head .body{grid-column:1/-1}
+}
+
+.case-meta{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding:24px 0;border-bottom:1px solid var(--rule);
+  font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;line-height:1.6;
+  color:var(--bone);
+}
+.case-meta > div{grid-column:span 3}
+.case-meta b{display:block;color:var(--bone-mute);font-weight:500;margin-bottom:6px;font-size:9px}
+@media (max-width:780px){.case-meta{gap:16px;padding:16px 0}.case-meta > div{grid-column:span 6}}
+
+.case-body{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding:60px 0;
+}
+.col-l{grid-column:1/8}
+.col-r{grid-column:9/13}
+.col-l h3, .col-r h3{
+  font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--coral);font-weight:600;margin-bottom:14px;
+}
+.col-l p{font-size:16px;line-height:1.6;margin-bottom:18px;max-width:62ch;color:var(--bone)}
+.col-l p:last-child{margin-bottom:0}
+.col-l p strong{font-weight:500;color:var(--coral)}
+.col-r .stamp{
+  border:1px solid var(--rule-strong);padding:18px;
+  font-size:14px;line-height:1.5;color:var(--bone);
+}
+.col-r .stamp b{color:var(--coral);font-weight:500;display:block;margin-bottom:8px;font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase}
+@media (max-width:780px){
+  .case-body{padding:32px 0;gap:24px}
+  .col-l,.col-r{grid-column:1/-1}
+}
+
+/* THE THINKING */
+.thinking{
+  padding:48px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+}
+.thinking-label{
+  grid-column:1/3;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--coral);
+}
+.thinking-body{grid-column:3/10;display:flex;flex-direction:column;gap:28px}
+.thinking-row{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.thinking-row .key{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  width:80px;color:var(--bone-mute);padding-top:8px;
+}
+.thinking-row .val{
+  font-family:var(--display);font-size:clamp(20px,2vw,28px);line-height:1.3;font-weight:500;color:var(--bone);
+}
+.thinking-row .val em{font-style:italic;color:var(--coral)}
+.thinking-margin{
+  grid-column:11/13;
+  font-family:var(--mono);font-size:10px;line-height:1.6;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--bone-mute);padding-top:6px;border-left:1px solid var(--rule);padding-left:14px;align-self:start;
+}
+.thinking-margin b{color:var(--coral);font-weight:500}
+@media (max-width:780px){
+  .thinking{padding:28px 0;gap:16px}
+  .thinking-label,.thinking-body,.thinking-margin{grid-column:1/-1}
+  .thinking-row{grid-template-columns:1fr;gap:6px}
+  .thinking-row .key{width:auto}
+}
+
+/* PULL QUOTE */
+.pullquote{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding:80px 0;border-bottom:1px solid var(--rule);
+}
+.pullquote blockquote{
+  grid-column:2/12;
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:clamp(32px,5vw,72px);line-height:1.1;letter-spacing:-0.02em;
+  color:var(--bone);
+}
+.pullquote blockquote::before{content:"";display:block;width:48px;height:2px;background:var(--coral);margin-bottom:28px}
+.pullquote .att{grid-column:2/12;margin-top:24px;font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bone-mute)}
+@media (max-width:780px){
+  .pullquote{padding:40px 0}
+  .pullquote blockquote,.pullquote .att{grid-column:1/-1}
+}
+
+/* OUTCOMES */
+.outcomes{padding:60px 0;border-bottom:1px solid var(--rule)}
+.outcomes-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:24px;font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bone-mute);
+}
+.outcomes-head .l{color:var(--bone)}
+.outcomes-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--bone)}
+.outcomes-cell{padding:32px 24px 24px 0;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
+.outcomes-cell:last-child{border-right:0}
+.outcomes-num{
+  font-family:var(--display);font-size:clamp(48px,6.6vw,96px);line-height:0.92;font-weight:500;
+  letter-spacing:-0.03em;color:var(--bone);font-feature-settings:"tnum";
+}
+.outcomes-num em{font-style:normal;font-size:0.45em;color:var(--coral);font-weight:500;font-family:var(--mono);letter-spacing:0;display:inline-block;transform:translateY(-0.25em);margin:0 0.05em}
+.outcomes-cap{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;line-height:1.55;color:var(--bone-mute);max-width:26ch;margin-top:10px}
+@media (max-width:780px){
+  .outcomes{padding:32px 0}
+  .outcomes-grid{grid-template-columns:1fr 1fr}
+  .outcomes-cell{padding:20px 16px 18px 0}
+  .outcomes-cell:nth-child(2){border-right:0}
+  .outcomes-cell:nth-child(1),.outcomes-cell:nth-child(2){border-bottom:1px solid var(--rule)}
+}
+
+/* LESSONS */
+.lessons{padding:60px 0 0}
+.lessons-head{font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);margin-bottom:20px}
+.lessons-body{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.lessons-body .text{grid-column:1/8;font-family:var(--display);font-size:clamp(22px,2.6vw,32px);line-height:1.3;font-weight:500;color:var(--bone)}
+.lessons-body .text em{font-style:italic;color:var(--coral)}
+.lessons-body .stamp{
+  grid-column:10/13;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid var(--rule-strong);padding:14px;line-height:1.6;align-self:start;color:var(--bone);
+}
+.lessons-body .stamp b{display:block;color:var(--coral);font-weight:500;margin-bottom:6px}
+@media (max-width:780px){
+  .lessons{padding:32px 0 0}
+  .lessons-body .text,.lessons-body .stamp{grid-column:1/-1}
+}
+
+/* === ATLAS HORIZONTAL SCROLL === */
+.atlas-horiz{
+  height:100vh;overflow:hidden;position:relative;
+  background:var(--onyx);color:var(--bone);
+  border-top:1px solid var(--bone);border-bottom:1px solid var(--bone);
+}
+.atlas-horiz-track{display:flex;height:100%;will-change:transform}
+.atlas-panel{
+  flex:0 0 100vw;height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto;
+  padding:calc(var(--header-h) + 20px) var(--pad) 36px;
+  gap:24px;
+  position:relative;border-right:1px solid var(--rule);
+}
+.atlas-panel-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bone-mute);
+}
+.atlas-panel-head b{color:var(--bone);font-weight:500}
+.atlas-panel-stage{display:flex;align-items:center;justify-content:center;position:relative}
+.atlas-panel-stage .grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;width:min(900px,90%)}
+.atlas-panel-stage .cell{
+  aspect-ratio:1;
+  border:1px solid var(--rule);
+  background:rgba(242,231,208,0.04);
+  border-radius:2px;transition:background .4s, border-color .4s;
+}
+.atlas-panel-stage .cell.lit{
+  background:rgba(242,231,208,0.16);
+  border-color:rgba(242,231,208,0.40);
+}
+.atlas-panel-stage .cell.brand{
+  background:var(--brand-color, var(--coral));
+  border-color:transparent;
+}
+.atlas-panel-foot{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:end;
+  padding-top:20px;border-top:1px solid var(--rule);
+}
+.atlas-panel-foot .l, .atlas-panel-foot .r{
+  font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone-mute);line-height:1.5;
+}
+.atlas-panel-foot .r{text-align:right}
+.atlas-panel-foot .center{text-align:center}
+.atlas-panel-foot .center .big{
+  font-family:var(--display);font-size:clamp(72px,12vw,180px);line-height:0.85;font-weight:500;
+  color:var(--bone);letter-spacing:-0.04em;font-feature-settings:"tnum";
+}
+.atlas-panel-foot .center .lab{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--bone-mute);margin-top:6px}
+.atlas-brand-name{font-family:var(--display);font-size:clamp(40px,6vw,84px);line-height:0.95;letter-spacing:-0.025em;font-weight:600;color:var(--bone)}
+.atlas-brand-name em{font-style:italic;font-weight:500;color:var(--coral)}
+.atlas-progress{position:absolute;left:var(--pad);right:var(--pad);bottom:14px;height:1px;background:var(--rule)}
+.atlas-progress-fill{height:100%;background:var(--coral);width:0%}
+@media (max-width:780px){
+  .atlas-panel{padding:calc(var(--header-h) + 12px) var(--pad) 24px;gap:14px}
+  .atlas-panel-head{font-size:10px;letter-spacing:0.08em;line-height:1.4}
+  .atlas-panel-stage .grid{gap:5px;width:100%}
+  .atlas-panel-foot{grid-template-columns:1fr;gap:12px;text-align:left;padding-top:14px}
+  .atlas-panel-foot .r,.atlas-panel-foot .center{text-align:left}
+  .atlas-panel-foot .center .big{font-size:64px}
+  .atlas-brand-name{font-size:36px}
+}
+
+/* ARTIFACTS */
+.artifact{padding:60px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.artifact-cap{grid-column:1/4;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;line-height:1.55;color:var(--bone-mute)}
+.artifact-cap b{display:block;color:var(--bone);font-weight:500;margin-bottom:6px}
+.artifact-fig{grid-column:5/13;border:1px solid var(--rule);background:var(--onyx-2);padding:28px;min-height:340px;position:relative}
+@media (max-width:780px){
+  .artifact{padding:32px 0;gap:16px}
+  .artifact-cap,.artifact-fig{grid-column:1/-1}
+  .artifact-fig{min-height:200px;padding:18px}
+}
+
+/* TOKEN DIAGRAM */
+.token-diagram{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;font-family:var(--mono);font-size:11px}
+.token-col{padding:18px;border-right:1px dashed var(--rule-strong);display:flex;flex-direction:column;gap:6px}
+.token-col:last-child{border-right:0}
+.token-col h4{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:14px;display:flex;justify-content:space-between}
+.token-col h4 span{color:var(--bone)}
+.token-row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--rule);font-size:11px}
+.token-row:last-child{border-bottom:0}
+.token-row .sw{width:14px;height:14px;border:1px solid var(--rule-strong);flex:none}
+.token-row .nm{flex:1;letter-spacing:0;color:var(--bone)}
+.token-row .vl{color:var(--bone-mute);font-size:10px}
+@media (max-width:780px){
+  .token-diagram{grid-template-columns:1fr}
+  .token-col{border-right:0;border-bottom:1px dashed var(--rule-strong)}
+}
+
+/* QA BOARD */
+.qa-board{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-strong);border:1px solid var(--rule-strong);font-family:var(--mono)}
+.qa-col{background:var(--onyx-2);padding:16px}
+.qa-col h4{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--amber);font-weight:500;padding-bottom:14px;border-bottom:1px solid var(--rule);margin-bottom:14px;display:flex;justify-content:space-between}
+.qa-col h4 span{color:var(--bone)}
+.qa-card{background:var(--onyx);border:1px solid var(--rule);padding:12px;margin-bottom:8px;font-size:11px;line-height:1.5;color:var(--bone)}
+.qa-card .tag{display:inline-block;font-size:9px;padding:2px 6px;border:1px solid var(--rule-strong);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.1em}
+.qa-card .tag.crit{color:var(--coral);border-color:var(--coral)}
+.qa-card .tag.a11y{color:var(--amber);border-color:var(--amber)}
+.qa-card .tag.copy{color:var(--teal);border-color:var(--teal)}
+.qa-card b{display:block;font-family:var(--sans);font-weight:500;color:var(--bone);text-transform:none;letter-spacing:0;font-size:12px;margin-bottom:4px}
+.qa-card .meta{font-size:9px;color:var(--bone-mute);text-transform:uppercase;letter-spacing:0.1em;margin-top:8px;display:flex;justify-content:space-between}
+@media (max-width:780px){.qa-board{grid-template-columns:1fr}}
+
+/* PROTO RACK */
+/* PROTO — Plan Picker, Peacock-faithful */
+.pp{
+  --pp-bg:#000;--pp-fg:#fff;--pp-card:#fff;--pp-card-fg:#0a0a0a;--pp-accent:#FAFA00;
+  background:var(--pp-bg);color:var(--pp-fg);
+  border-radius:6px;padding:24px 24px 28px;font-family:var(--sans);
+  position:relative;overflow:hidden;
+}
+.pp.theme-stt{--pp-bg:#0E0F2A;--pp-accent:#7B5BFF}
+.pp.theme-now{--pp-bg:#0A0A0A;--pp-accent:#E54E2C}
+.pp-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.pp-logo{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:-0.02em;display:flex;align-items:center;gap:6px}
+.pp-logo .dots{display:inline-flex;gap:2px}
+.pp-logo .dots i{width:4px;height:4px;border-radius:50%;background:var(--pp-accent);display:block}
+.pp-logo .dots i:nth-child(2){background:#5BD4FF}
+.pp-logo .dots i:nth-child(3){background:#FF5B7A}
+.pp-cta-row{display:flex;gap:6px}
+.pp-cta-row span{padding:5px 12px;font-size:10px;letter-spacing:0.04em;border-radius:999px;font-weight:500}
+.pp-cta-row .signin{background:#1f1f1f;color:#fff}
+.pp-cta-row .start{background:var(--pp-accent);color:#0a0a0a}
+.pp-h{font-family:var(--display);font-size:clamp(20px,2.4vw,30px);text-align:center;font-weight:600;letter-spacing:-0.02em;margin:6px 0 14px}
+.pp-toggle{display:flex;justify-content:center;margin-bottom:14px}
+.pp-toggle-inner{display:inline-flex;background:#1f1f1f;border-radius:999px;padding:3px;font-size:11px;font-weight:500}
+.pp-toggle-inner span{padding:5px 16px;border-radius:999px}
+.pp-toggle-inner span.on{background:#fff;color:#0a0a0a}
+.pp-popular{display:flex;justify-content:center;margin-bottom:-10px;position:relative;z-index:2}
+.pp-popular span{background:var(--pp-accent);color:#0a0a0a;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;padding:4px 10px;border-radius:999px}
+.pp-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:stretch}
+.pp-card{background:var(--pp-card);color:var(--pp-card-fg);border-radius:14px;padding:16px 14px 12px;display:flex;flex-direction:column;gap:8px;font-size:11px;line-height:1.4}
+.pp-card.featured{padding-top:20px;outline:2px solid var(--pp-accent);outline-offset:0}
+.pp-card h6{font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-0.01em}
+.pp-card .desc{font-size:10px;color:#444;line-height:1.4}
+.pp-card ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px}
+.pp-card li{display:flex;gap:6px;align-items:flex-start;font-size:10px;color:#1a1a1a}
+.pp-card li::before{content:"✓";color:#0a0a0a;font-weight:700;flex:none}
+.pp-card li.x{color:#999}
+.pp-card li.x::before{content:"✕";color:#999}
+.pp-card .spacer{flex:1}
+.pp-card .price-row{display:flex;justify-content:space-between;align-items:center;background:#f3f3f3;padding:7px 9px;border-radius:8px}
+.pp-card .price-row .price{color:#0a0a0a;font-weight:600;font-size:11px;flex:1;text-align:left;padding:0 6px}
+.pp-card .price-row button{background:var(--pp-accent);border:0;border-radius:999px;padding:5px 11px;font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#0a0a0a;font-family:var(--sans)}
+.pp-card .annual-note{font-size:9px;color:#666;line-height:1.3}
+.pp-tabs{display:flex;gap:0;margin-bottom:14px;border-bottom:1px solid var(--rule-strong)}
+.pp-tabs button{background:none;border:0;font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;padding:10px 14px;color:var(--ink-mute);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s}
+.pp-tabs button.on{color:var(--ink);border-bottom-color:var(--coral)}
+.pp-tabs button:hover{color:var(--ink)}
+.pp-state{display:none}
+.pp-state.on{display:block}
+.pp-meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-mute)}
+.pp-meta b{color:var(--coral);font-weight:500}
+@media (max-width:780px){
+  .pp{padding:14px}
+  .pp-cards{grid-template-columns:1fr;gap:10px}
+  .pp-tabs button{padding:8px 8px;font-size:9px;letter-spacing:0.06em}
+}
+
+/* CAREER */
+.career-row{
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  padding:28px 0;border-top:1px solid var(--rule);align-items:start;position:relative;
+  transition:background .25s ease;
+}
+.career-row:hover{background:rgba(255,85,68,0.04)}
+.career-row .yr{grid-column:1/3;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone-mute);padding-top:6px}
+.career-row .ti{grid-column:3/8}
+.career-row .ti h3{font-family:var(--display);font-size:clamp(22px,2.4vw,32px);line-height:1.1;font-weight:600;margin-bottom:6px;color:var(--bone)}
+.career-row .ti .org{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--coral);font-weight:500}
+.career-row .ti .loc{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone-mute);margin-top:4px}
+.career-row .desc{grid-column:8/13;font-size:14px;line-height:1.55;color:var(--bone-mute);max-width:42ch}
+.career-row.tail{border-bottom:1px solid var(--rule)}
+@media (max-width:780px){
+  .career-row{padding:18px 0;gap:8px}
+  .career-row .yr,.career-row .ti,.career-row .desc{grid-column:1/-1}
+  .career-row .yr{margin-bottom:2px}
+  .career-row .desc{margin-top:8px}
+}
+
+.career-foot{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding-top:36px}
+.career-foot .span{grid-column:1/8;font-family:var(--display);font-size:clamp(28px,3.6vw,52px);line-height:1.1;font-weight:500;color:var(--bone)}
+.career-foot .span em{font-style:italic;color:var(--coral)}
+.career-foot .legend{grid-column:9/13;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;line-height:1.7;text-transform:uppercase;border-top:1px solid var(--bone);padding-top:14px;color:var(--bone-mute)}
+.career-foot .legend b{color:var(--bone);font-weight:500}
+@media (max-width:780px){.career-foot{padding-top:24px}.career-foot .span,.career-foot .legend{grid-column:1/-1}}
+
+/* HOW I WORK */
+.how-lede{
+  font-family:var(--display);font-size:clamp(30px,4.4vw,64px);line-height:1.05;letter-spacing:-0.025em;
+  font-weight:500;max-width:18ch;margin-bottom:48px;color:var(--bone);padding-top:24px;
+}
+.how-lede em{font-style:italic;color:var(--coral)}
+.how-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.how-card{grid-column:span 4;border-top:1px solid var(--rule-strong);padding-top:18px}
+.how-card .num{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;color:var(--coral);margin-bottom:14px;display:block}
+.how-card h3{font-family:var(--display);font-size:22px;line-height:1.2;font-weight:600;margin-bottom:10px;color:var(--bone)}
+.how-card p{font-size:14px;line-height:1.55;color:var(--bone-mute)}
+@media (max-width:780px){
+  .how-lede{margin-bottom:24px;padding-top:8px}
+  .how-card{grid-column:1/-1;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+  .how-card:last-child{border-bottom:0}
+}
+
+/* CONTACT */
+.contact-mark{
+  font-family:var(--display);font-size:clamp(80px,18vw,280px);line-height:0.9;letter-spacing:-0.04em;font-weight:600;
+  display:block;color:var(--bone);padding-top:24px;
+}
+.contact-mark em{font-style:italic;color:var(--coral);font-weight:500}
+.contact-foot{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding-top:60px;margin-top:60px;border-top:1px solid var(--bone)}
+.contact-list{grid-column:1/7;display:flex;flex-direction:column;gap:0}
+.contact-list a{
+  display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--rule);
+  font-family:var(--display);font-size:clamp(22px,2.4vw,30px);line-height:1.2;font-weight:500;
+  position:relative;transition:padding .25s ease, color .25s ease;color:var(--bone);
+}
+.contact-list a:hover{padding-left:14px;color:var(--coral)}
+.contact-list a .arr{font-family:var(--mono);font-size:14px;letter-spacing:0.05em}
+.contact-list a small{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--bone-mute);font-weight:500;display:block;margin-top:4px}
+.contact-aside{grid-column:9/13;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;line-height:1.7;text-transform:uppercase;color:var(--bone-mute)}
+.contact-aside b{color:var(--coral);font-weight:500;display:block;margin-bottom:14px}
+.contact-aside p{margin-bottom:14px}
+.contact-aside .now{color:var(--coral)}
+@media (max-width:780px){
+  .contact-foot{padding-top:32px;margin-top:32px}
+  .contact-list,.contact-aside{grid-column:1/-1}
+  .contact-aside{margin-top:24px}
+}
+
+/* COLOPHON / FOOTER */
+.colophon{
+  padding:48px var(--pad) 32px;border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(12,1fr);gap:24px;
+  font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;line-height:1.6;color:var(--bone-mute);
+  background:var(--onyx-2);
+}
+.colophon > div:nth-child(1){grid-column:1/4}
+.colophon > div:nth-child(2){grid-column:5/9}
+.colophon > div:nth-child(3){grid-column:10/13;text-align:right}
+.colophon b{color:var(--bone);font-weight:500;display:block;margin-bottom:6px}
+.colophon .swatches{display:flex;gap:6px;margin-top:8px}
+.colophon .swatches span{width:14px;height:14px;border:1px solid var(--rule-strong);display:inline-block}
+@media (max-width:780px){
+  .colophon{padding:32px var(--pad) 24px;gap:16px}
+  .colophon > div:nth-child(1),.colophon > div:nth-child(2),.colophon > div:nth-child(3){grid-column:1/-1;text-align:left}
+}
+
+.cursor-coord{position:fixed;bottom:14px;right:14px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone-mute);pointer-events:none;z-index:55}
+@media (max-width:780px){.cursor-coord{display:none}}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(24px)}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none}
+  .hero-statement .line span{transform:none !important}
+}
+:focus-visible{outline:2px solid var(--coral);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="header" aria-label="Site">
+  <div class="header-mark">
+    <span class="dot" aria-hidden="true"></span>
+    <b>JK</b>
+    <span class="sep">/</span>
+    <span>Joe Kocovsky</span>
+    <span class="sep">·</span>
+    <span>Senior Design Engineer</span>
+  </div>
+  <nav class="header-nav" aria-label="Sections">
+    <a href="#index">Index</a>
+    <a href="#work">Work</a>
+    <a href="#career">Career</a>
+    <a href="#how">Process</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- =============== HERO =============== -->
+<section class="hero" id="top">
+  <div class="hero-meta">
+    <div class="hero-meta-item c1"><b>The portfolio of</b>Joe Kocovsky · <span style="color:var(--coral)">JK—2026.05</span></div>
+    <div class="hero-meta-item c2"><b>Filed under</b>Design Engineering<br/>Design Systems · UX</div>
+    <div class="hero-meta-item c3"><b>Most recent</b>Peacock (NBCU)<br/>Commerce Product · 2023–2025</div>
+    <div class="hero-meta-item c4"><b>Status</b>Open to senior roles<br/><span class="live">▸ available now</span></div>
+  </div>
+
+  <div class="hero-statement" aria-label="I build the layer where design intent survives contact with engineering.">
+    <span class="line"><span data-split="line">I build the layer</span></span>
+    <span class="line indent"><span data-split="line">where <em>design&nbsp;intent</em></span></span>
+    <span class="line"><span data-split="line">survives contact</span></span>
+    <span class="line double-indent"><span data-split="line">with engineering.</span></span>
+  </div>
+
+  <div class="hero-foot">
+    <p class="hero-foot-l">
+      Twenty years of consumer web UI, design systems, and the unglamorous craft of making 50 components behave like 150 across four brands. <b>Most recently:</b> Senior Design Engineer on Commerce Product at Peacock (NBCUniversal).
+    </p>
+    <div class="hero-foot-r">
+      <span class="meta">New York, NY · 11102</span>
+      <span class="meta">joe.kocovsky@gmail.com</span>
+      <span class="scroll-cue"><span>Scroll to enter</span><span class="arrow" aria-hidden="true"></span></span>
+    </div>
+  </div>
+</section>
+
+<!-- =============== POSITIONING =============== -->
+<div class="slate" id="index">
+  <div class="num">§01</div>
+  <div class="label">Positioning<small>The frame I work from</small></div>
+  <div class="meta-r">2006 → 2026<br/>Twenty years</div>
+</div>
+<section class="section">
+  <div class="pos-lede">
+    <h2 class="reveal">I'm the person you call when the gap between Figma and production has become its own product. I write the components. I write the tokens. I write the pitch deck for why we're rewriting the components. I do the design QA after, and <em>I keep the receipts.</em></h2>
+    <aside class="pos-aside reveal">
+      <b>Twenty years.</b>
+      Crate &amp; Barrel<br/>VSA Partners<br/>Studio 424<br/>Avant<br/>Amount<br/><span class="now">Peacock / NBCU</span><br/><br/>
+      <b>Through-line.</b>
+      Multi-brand consumer UI that ships.
+    </aside>
+  </div>
+
+  <div class="pos-tags">
+    <div class="pos-tag reveal">
+      <span class="num">/A</span>
+      <h3>Design systems as a product, not a deliverable.</h3>
+      <p>Roadmaps. Pitches. Governance. Adoption. Atlas grew from ~50 to 150+ production-backed components on my watch — because someone treated it like internal SaaS instead of a Figma library.</p>
+    </div>
+    <div class="pos-tag reveal">
+      <span class="num">/B</span>
+      <h3>Prototyping that makes a decision, not a deck.</h3>
+      <p>High-fidelity, state-aware, AI-accelerated. Modeled annual-vs-monthly, tier swaps, four brand themes — so commerce decisions happened on the artifact, one to two sprints earlier.</p>
+    </div>
+    <div class="pos-tag reveal">
+      <span class="num">/C</span>
+      <h3>Production fidelity is the only fidelity that counts.</h3>
+      <p>Operationalized Design QA at Peacock — checklists, Jira workflow, two-week QA window. Cut late-cycle UI rework 30–50%. The pixel either ships or it doesn't.</p>
+    </div>
+  </div>
+
+  <div class="portrait">
+    <div class="img reveal"><img src="assets/headshot.jpg" alt="Joe Kocovsky"></div>
+    <div class="copy reveal">
+      <p class="big">An <em>opinionated</em> design technologist who's spent twenty years on the bridge between design and engineering.</p>
+      <p>I started as a front-end developer at Crate &amp; Barrel in 2012, ran the responsive redesign of three retail brands, then spent the back half of my career embedded in design — first as the manager of the systems team at Amount, then as a Senior Design Engineer on Commerce at Peacock. The job has changed names four times. The work has been the same: take a designer's intent and walk it all the way to the pixel.</p>
+      <div class="taglist">
+        <span>Design Engineer</span><span>Design Systems</span><span>WCAG 2.2 AA</span><span>Figma Variables</span><span>Code Connect</span><span>Claude Code · Cursor · MCP</span><span>Shape Up</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CASE 01 =============== -->
+<div class="slate" id="work">
+  <div class="num">§02·01</div>
+  <div class="label">Case Study 01<small>Atlas Design System · Peacock / NBCU</small></div>
+  <div class="meta-r">2023 — 2025<br/>NEW YORK, NY</div>
+</div>
+<section class="section">
+  <div class="case-head">
+    <div class="body">
+      <p class="kicker">Case study · Peacock / NBCUniversal · 2023—2025</p>
+      <h2 class="reveal">Atlas, scaled from <em>one brand</em> to four.</h2>
+      <p class="deck reveal">A flagship streaming design system asked to become a multi-brand foundation. We rebuilt it as a tiered token architecture and shipped themed UI in days instead of weeks.</p>
+    </div>
+  </div>
+  <div class="case-meta">
+    <div><b>Role</b>Senior Design Engineer · Atlas DS</div>
+    <div><b>Team</b>Multi-disciplinary DS pod · 6+</div>
+    <div><b>Scope</b>Web · client/TV · 4 brands · global</div>
+    <div><b>Stakes</b>NBCU's Global Streaming Platform</div>
+  </div>
+
+  <div class="case-body">
+    <div class="col-l reveal">
+      <h3>Context</h3>
+      <p>Peacock launched on a mature design system tuned for <strong>one</strong> flagship streaming product. Then NBCU's Global Streaming Platform strategy turned Peacock's tech into the foundation for SkyShowtime, NOW, and Showmax — partner services in different markets, with different brand expressions, on the same plumbing.</p>
+      <p>Atlas wasn't a system any more. It was a platform dependency for an international product line. And the clock was running.</p>
+    </div>
+    <div class="col-r reveal">
+      <div class="stamp">
+        <b>The brief, in plain English.</b>
+        Stop maintaining one design system. Start maintaining a foundation that can produce four design systems on demand — without the brands fragmenting, drifting, or stepping on each other.
+      </div>
+    </div>
+  </div>
+
+  <div class="thinking">
+    <div class="thinking-label">The thinking →</div>
+    <div class="thinking-body">
+      <div class="thinking-row"><span class="key">Rejected</span><span class="val">A separate library per brand. Cheap to start, <em>impossible</em> to govern. Drift would have eaten the program inside two quarters.</span></div>
+      <div class="thinking-row"><span class="key">Rejected</span><span class="val">A single component that knew about every brand. Conditional spaghetti that hides intent and slows engineers down.</span></div>
+      <div class="thinking-row"><span class="key">Bet on</span><span class="val">A <em>tiered token model</em>: base → semantic → component. Components see only semantics. Brands swap base values. The system stays one thing.</span></div>
+      <div class="thinking-row"><span class="key">And</span><span class="val">Naming conventions that mapped to engineering output, so the token didn't change shape between Figma and the pipeline.</span></div>
+    </div>
+    <aside class="thinking-margin">
+      Margin note —<br/>
+      The hardest sell wasn't the architecture. It was getting four brand teams to agree which values were <b>brand-owned</b> and which belonged to the system. That's a politics problem dressed as a technical one.
+    </aside>
+  </div>
+</section>
+
+<!-- ATLAS HORIZONTAL SCROLL -->
+<section class="atlas-horiz" aria-label="Atlas Design System: scaling visualization">
+  <div class="atlas-horiz-track" id="atlasTrack">
+    <div class="atlas-panel" style="--brand-color: #FAFA00">
+      <div class="atlas-panel-head"><span><b>Atlas DS</b> · Phase 01 · Single-brand foundation</span><span>2023</span></div>
+      <div class="atlas-panel-stage"><div class="grid" data-grid-fill="50" data-grid-brand="50"></div></div>
+      <div class="atlas-panel-foot">
+        <div class="l"><div class="atlas-brand-name"><em>Peacock.</em></div>One product. One brand. One library.</div>
+        <div class="center"><div class="big" data-counter data-from="0" data-to="50">50</div><div class="lab">production-backed components</div></div>
+        <div class="r">Tokens — flat<br/>Theming — none<br/>Governance — implicit</div>
+      </div>
+    </div>
+    <div class="atlas-panel" style="--brand-color: #7B5BFF">
+      <div class="atlas-panel-head"><span><b>Atlas DS</b> · Phase 02 · Tiered tokens introduced</span><span>2024</span></div>
+      <div class="atlas-panel-stage"><div class="grid" data-grid-fill="84" data-grid-brand="32"></div></div>
+      <div class="atlas-panel-foot">
+        <div class="l"><div class="atlas-brand-name"><em>SkyShowtime.</em></div>base → semantic → component.<br/>One brand swap; no fork.</div>
+        <div class="center"><div class="big" data-counter data-from="50" data-to="84">84</div><div class="lab">components · 2 brands themed</div></div>
+        <div class="r">Tokens — tiered<br/>Theming — variable<br/>Governance — bootstrap</div>
+      </div>
+    </div>
+    <div class="atlas-panel" style="--brand-color: #E54E2C">
+      <div class="atlas-panel-head"><span><b>Atlas DS</b> · Phase 03 · Component API standardization</span><span>2024</span></div>
+      <div class="atlas-panel-stage"><div class="grid" data-grid-fill="118" data-grid-brand="34"></div></div>
+      <div class="atlas-panel-foot">
+        <div class="l"><div class="atlas-brand-name"><em>NOW.</em></div>APIs unified. Variants standardized.<br/>Drift stops being a full-time job.</div>
+        <div class="center"><div class="big" data-counter data-from="84" data-to="118">118</div><div class="lab">components · 3 brands themed</div></div>
+        <div class="r">Tokens — consolidated<br/>Theming — production<br/>Governance — formal</div>
+      </div>
+    </div>
+    <div class="atlas-panel" style="--brand-color: #27A85A">
+      <div class="atlas-panel-head"><span><b>Atlas DS</b> · Phase 04 · Multi-brand foundation, shipping</span><span>2025</span></div>
+      <div class="atlas-panel-stage"><div class="grid" data-grid-fill="150" data-grid-brand="36"></div></div>
+      <div class="atlas-panel-foot">
+        <div class="l"><div class="atlas-brand-name"><em>Showmax.</em></div>One foundation. Four brands. Themed UI<br/>shipping in <span style="color:var(--coral)">days, not weeks</span>.</div>
+        <div class="center"><div class="big" data-counter data-from="118" data-to="150">150</div><div class="lab">+ components · 4 brands global</div></div>
+        <div class="r">Translation time — −30/50%<br/>Themed rollout — wks → days<br/>Brands — Peacock · STT · NOW · Showmax</div>
+      </div>
+    </div>
+  </div>
+  <div class="atlas-progress" aria-hidden="true"><div class="atlas-progress-fill" id="atlasProg"></div></div>
+</section>
+
+<section class="section">
+  <div class="artifact reveal">
+    <div class="artifact-cap">
+      <b>Fig. 1.1</b>
+      Token tier — diagram excerpt.<br/><br/>
+      Brands swap <span style="color:var(--coral)">base</span> values. Components consume <span style="color:var(--bone)">semantic</span> only. The component layer is brand-agnostic.
+    </div>
+    <div class="artifact-fig" style="padding:0">
+      <div class="token-diagram">
+        <div class="token-col">
+          <h4>Base <span>14</span></h4>
+          <div class="token-row"><span class="sw" style="background:#FAFA00"></span><span class="nm">color.peacock.500</span><span class="vl">#FAFA00</span></div>
+          <div class="token-row"><span class="sw" style="background:#7B5BFF"></span><span class="nm">color.stt.500</span><span class="vl">#7B5BFF</span></div>
+          <div class="token-row"><span class="sw" style="background:#E54E2C"></span><span class="nm">color.now.500</span><span class="vl">#E54E2C</span></div>
+          <div class="token-row"><span class="sw" style="background:#27A85A"></span><span class="nm">color.showmax.500</span><span class="vl">#27A85A</span></div>
+          <div class="token-row"><span class="sw" style="background:#0A0B10"></span><span class="nm">color.neutral.1000</span><span class="vl">#0A0B10</span></div>
+          <div class="token-row"><span class="sw" style="background:#fff"></span><span class="nm">color.neutral.0</span><span class="vl">#FFFFFF</span></div>
+        </div>
+        <div class="token-col">
+          <h4>Semantic <span>22</span></h4>
+          <div class="token-row"><span class="sw" style="background:var(--coral)"></span><span class="nm">action.brand.bg.default</span><span class="vl">→ base.500</span></div>
+          <div class="token-row"><span class="sw" style="background:#0A0B10"></span><span class="nm">action.brand.fg.default</span><span class="vl">→ neutral.1000</span></div>
+          <div class="token-row"><span class="sw" style="background:#0A0B10"></span><span class="nm">surface.canvas</span><span class="vl">→ neutral.1000</span></div>
+          <div class="token-row"><span class="sw" style="background:#fff"></span><span class="nm">text.primary</span><span class="vl">→ neutral.0</span></div>
+          <div class="token-row"><span class="sw" style="background:rgba(255,255,255,.12)"></span><span class="nm">border.subtle</span><span class="vl">→ alpha.0/12</span></div>
+          <div class="token-row"><span class="sw" style="background:#FF5544"></span><span class="nm">feedback.critical.bg</span><span class="vl">→ red.500</span></div>
+        </div>
+        <div class="token-col">
+          <h4>Component <span>50+</span></h4>
+          <div class="token-row"><span class="sw" style="background:var(--coral)"></span><span class="nm">button.primary.bg</span><span class="vl">→ action.brand.bg</span></div>
+          <div class="token-row"><span class="sw" style="background:#0A0B10"></span><span class="nm">button.primary.fg</span><span class="vl">→ action.brand.fg</span></div>
+          <div class="token-row"><span class="sw" style="background:transparent;border-color:rgba(242,231,208,.3)"></span><span class="nm">card.surface</span><span class="vl">→ surface.canvas</span></div>
+          <div class="token-row"><span class="sw" style="background:#fff"></span><span class="nm">card.title.fg</span><span class="vl">→ text.primary</span></div>
+          <div class="token-row"><span class="sw" style="background:rgba(255,255,255,.12)"></span><span class="nm">card.divider</span><span class="vl">→ border.subtle</span></div>
+          <div class="token-row"><span class="sw" style="background:#FF5544"></span><span class="nm">paywall.error.bg</span><span class="vl">→ feedback.critical.bg</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <blockquote class="reveal">"Atlas evolved from a single-brand design system into a scalable multi-brand foundation for NBCU's Global Streaming Platform."</blockquote>
+    <span class="att">— STAR · Peacock Design Systems · 2025</span>
+  </div>
+
+  <div class="outcomes">
+    <div class="outcomes-head"><span class="l">§01.4 — Outcomes</span><span>Measured · 2023—2025</span></div>
+    <div class="outcomes-grid">
+      <div class="outcomes-cell"><div class="outcomes-num"><em>×</em><span data-counter data-from="0" data-to="4">4</span></div><div class="outcomes-cap">Brands themed on one foundation — Peacock, SkyShowtime, NOW, Showmax</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><span data-counter data-from="50" data-to="150">150</span><em>+</em></div><div class="outcomes-cap">Production-backed components, up from ~50</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><em>−</em><span data-counter data-from="0" data-to="50">50</span><em>%</em></div><div class="outcomes-cap">Design-to-dev translation time, ceiling</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num">wks→<em>days</em></div><div class="outcomes-cap">Themed UI rollout, post-foundation</div></div>
+    </div>
+  </div>
+
+  <div class="lessons">
+    <div class="lessons-head">— What this taught me</div>
+    <div class="lessons-body">
+      <p class="text reveal">The architecture was the easy part. <em>Naming</em> was the hard part — because naming forces the brands to admit which decisions are theirs and which belong to the system. I'd start that conversation a quarter earlier next time, before any tokens shipped.</p>
+      <div class="stamp"><b>If I did it again</b>Earlier brand-owner alignment.<br/>Earlier engineering pipeline contract.<br/>Visual regression baked in from day one.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CASE 02 =============== -->
+<div class="slate">
+  <div class="num">§02·02</div>
+  <div class="label">Case Study 02<small>Design QA Program · Peacock</small></div>
+  <div class="meta-r">2024<br/>NEW YORK, NY</div>
+</div>
+<section class="section alt">
+  <div class="case-head">
+    <div class="body">
+      <p class="kicker">Case study · Peacock / NBCUniversal · 2024</p>
+      <h2 class="reveal">Design QA, made <em>boring on purpose.</em></h2>
+      <p class="deck reveal">UI quality issues kept landing late. I built a Design QA program that turned ad-hoc Slack feedback into a tracked, two-week, before-release ritual — and reduced late-cycle rework by 30–50%.</p>
+    </div>
+  </div>
+  <div class="case-meta">
+    <div><b>Role</b>Program lead · Design Engineer</div>
+    <div><b>Partners</b>Design · Eng · PM · Functional QA</div>
+    <div><b>Scope</b>Web · native · multi-platform</div>
+    <div><b>Stakes</b>Release predictability + design debt</div>
+  </div>
+
+  <div class="case-body">
+    <div class="col-l reveal">
+      <h3>Context</h3>
+      <p>As feature velocity climbed, fidelity slid. Functional QA caught the <strong>does it work</strong> bugs. Nobody had time, structure, or authority for the <strong>does it look right, behave right, read right, work for everybody</strong> bugs.</p>
+      <p>Designers got 2–3 days at the end of a sprint to review builds. Most "approvals" were conditional. Decisions lived in Slack threads that disappeared. Figma drifted from production. Design debt compounded silently, every release.</p>
+    </div>
+    <div class="col-r reveal">
+      <div class="stamp"><b>The actual problem.</b>Design QA wasn't being skipped because people didn't care. It was being skipped because it had no infrastructure — no checklist, no Jira status, no calendar window, no Definition of Done line item.</div>
+    </div>
+  </div>
+
+  <div class="thinking">
+    <div class="thinking-label">The thinking →</div>
+    <div class="thinking-body">
+      <div class="thinking-row"><span class="key">Rejected</span><span class="val">"Designers should just review more carefully." A request, not a process. <em>Will not survive</em> the next release.</span></div>
+      <div class="thinking-row"><span class="key">Rejected</span><span class="val">A pixel-perfect mandate. Stops shipping. Burns engineering goodwill in a week.</span></div>
+      <div class="thinking-row"><span class="key">Bet on</span><span class="val">Design QA as <em>ops infrastructure</em>: a checklist, a Jira workflow, a defined two-week window, co-authored with engineering so they own it too.</span></div>
+      <div class="thinking-row"><span class="key">And</span><span class="val">Pitching it as <em>rework reduction</em>, not perfection. The metric was "fewer late surprises," not "more bug tickets."</span></div>
+    </div>
+    <aside class="thinking-margin">
+      Margin note —<br/>Co-authoring the checklist with engineers was the unlock. Once they'd written half of it, it stopped being a designer's wishlist and became <b>a shared definition of done</b>.
+    </aside>
+  </div>
+
+  <div class="artifact reveal">
+    <div class="artifact-cap"><b>Fig. 2.1</b>Design QA board — sample week.<br/><br/>Issues triaged across visual, accessibility, copy, interaction. Each carries a fidelity definition co-owned by design and engineering.</div>
+    <div class="artifact-fig" style="padding:0">
+      <div class="qa-board">
+        <div class="qa-col">
+          <h4>Open <span>04</span></h4>
+          <div class="qa-card"><span class="tag crit">Critical</span><b>Plan card spacing drifts at 768—1024</b>Vertical rhythm collapses on tablet. Tokens correct, layout incorrect.<div class="meta"><span>PWX-2841</span><span>Web · paywall</span></div></div>
+          <div class="qa-card"><span class="tag a11y">A11y</span><b>Promo banner contrast 3.9:1</b>Below WCAG 2.2 AA. Switch fg → text.primary.inverse.<div class="meta"><span>PWX-2845</span><span>Web · promo</span></div></div>
+          <div class="qa-card"><span class="tag">Visual</span><b>CTA hover state missing</b>Specced in Figma; shipped without.<div class="meta"><span>PWX-2846</span><span>Native · iOS</span></div></div>
+          <div class="qa-card"><span class="tag copy">Copy</span><b>STT receipt copy localized inconsistently</b><div class="meta"><span>PWX-2849</span><span>Web · NL/EN</span></div></div>
+        </div>
+        <div class="qa-col">
+          <h4>In Review <span>03</span></h4>
+          <div class="qa-card"><span class="tag">Visual</span><b>Tier badge corner radius 4 → 6</b>Component token desync.<div class="meta"><span>PWX-2832</span><span>Web</span></div></div>
+          <div class="qa-card"><span class="tag a11y">A11y</span><b>Focus order in plan picker</b>Skips price → recommended chip → CTA.<div class="meta"><span>PWX-2833</span><span>Web</span></div></div>
+          <div class="qa-card"><span class="tag crit">Critical</span><b>Annual ↔ monthly toggle latency</b>Visual lag &gt; 200ms on transition.<div class="meta"><span>PWX-2828</span><span>Web · paywall</span></div></div>
+        </div>
+        <div class="qa-col">
+          <h4>Closed · this cycle <span>26</span></h4>
+          <div class="qa-card"><span class="tag">Visual</span><b>Showmax button radius normalization</b><div class="meta"><span>PWX-2790</span><span>Closed · DS</span></div></div>
+          <div class="qa-card"><span class="tag a11y">A11y</span><b>Modal dismiss keyboard trap</b><div class="meta"><span>PWX-2792</span><span>Closed</span></div></div>
+          <div class="qa-card"><span class="tag copy">Copy</span><b>Receipt formatting EUR · GBP</b><div class="meta"><span>PWX-2799</span><span>Closed</span></div></div>
+          <div class="qa-card"><span class="tag">Visual</span><b>NOW gradient banding on TV client</b><div class="meta"><span>PWX-2806</span><span>Closed · TV</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <blockquote class="reveal">"Design QA became operational infrastructure rather than an ad hoc designer effort."</blockquote>
+    <span class="att">— STAR · Peacock Design QA</span>
+  </div>
+
+  <div class="outcomes">
+    <div class="outcomes-head"><span class="l">§02.4 — Outcomes</span><span>Measured · post-rollout</span></div>
+    <div class="outcomes-grid">
+      <div class="outcomes-cell"><div class="outcomes-num"><em>−</em><span data-counter data-from="0" data-to="50">50</span><em>%</em></div><div class="outcomes-cap">Late-cycle UI rework / "pixel fix" churn, ceiling</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><em>−</em><span data-counter data-from="0" data-to="40">40</span><em>%+</em></div><div class="outcomes-cap">Design / implementation drift, via standardized review</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><em>−</em><span data-counter data-from="0" data-to="70">70</span><em>%</em></div><div class="outcomes-cap">Undocumented Slack-only QA decisions, ceiling</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num">~<span data-counter data-from="50" data-to="85">85</span><em>%</em></div><div class="outcomes-cap">Design system adherence in new UI work</div></div>
+    </div>
+  </div>
+
+  <div class="lessons">
+    <div class="lessons-head">— What this taught me</div>
+    <div class="lessons-body">
+      <p class="text reveal">A program isn't a doc. It's a <em>calendar slot</em>, a <em>Jira status</em>, and a <em>Definition of Done line item</em>. If you can't point to those three things, you don't have a program — you have a Notion page that nobody opened twice.</p>
+      <div class="stamp"><b>If I did it again</b>Visual regression tooling on day one.<br/>A "fidelity vocabulary" doc before checklists.<br/>Sales-pitch the rework number, not the ideal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CASE 03 =============== -->
+<div class="slate">
+  <div class="num">§02·03</div>
+  <div class="label">Case Study 03<small>Rapid Prototyping · Commerce</small></div>
+  <div class="meta-r">2024 — 2025<br/>NEW YORK, NY</div>
+</div>
+<section class="section">
+  <div class="case-head">
+    <div class="body">
+      <p class="kicker">Case study · Peacock Commerce · 2024—2025</p>
+      <h2 class="reveal">Prototypes that <em>make a decision.</em></h2>
+      <p class="deck reveal">High-fidelity, state-aware, AI-accelerated. Modeled annual-vs-monthly, tier swaps, four-brand themes — so commerce decisions happened on the artifact, one to two sprints earlier than they used to.</p>
+    </div>
+  </div>
+  <div class="case-meta">
+    <div><b>Role</b>Design Engineer · prototypes</div>
+    <div><b>Tools</b>Figma Variables · React · Claude Code · Cursor · MCP</div>
+    <div><b>Surfaces</b>Web paywall · client/TV · billing · promos</div>
+    <div><b>Stakes</b>Pre-engineering decisions on real flows</div>
+  </div>
+
+  <div class="case-body">
+    <div class="col-l reveal">
+      <h3>Context</h3>
+      <p>Commerce flows have <strong>state</strong>. Annual vs monthly. Tier × package. Region. Brand theme. Promo overrides. Price-formatting rules. Static comps couldn't communicate any of it. Every decision meeting started with five minutes of "wait, but what about…" — about behavior nobody could see.</p>
+      <p>The prototype became the meeting agenda.</p>
+    </div>
+    <div class="col-r reveal">
+      <div class="stamp"><b>The frame I worked from.</b>A prototype isn't a deliverable. It's a <span style="color:var(--coral)">decision instrument</span>. Its job is to make the room agree, in one session, on something that would otherwise take three.</div>
+    </div>
+  </div>
+
+  <div class="thinking">
+    <div class="thinking-label">The thinking →</div>
+    <div class="thinking-body">
+      <div class="thinking-row"><span class="key">Rejected</span><span class="val">Click-through Figma frames. Fine for happy path; <em>useless</em> for the conditional logic that actually contains the decisions.</span></div>
+      <div class="thinking-row"><span class="key">Bet on</span><span class="val">Variables-driven Figma for fast iteration; code prototypes when interaction realism demanded it. <em>Match the tool to the question.</em></span></div>
+      <div class="thinking-row"><span class="key">Bet on</span><span class="val">AI tooling — Claude Code, Cursor, Figma MCP — as a force multiplier on scaffolding, not a replacement for design judgment.</span></div>
+      <div class="thinking-row"><span class="key">Guardrail</span><span class="val">Every AI-generated scaffold gets grounded in the design system. Prototypes had to behave like production constraints, not <em>design ideal.</em></span></div>
+    </div>
+    <aside class="thinking-margin">Margin note —<br/>Early adoption, not because it was fashionable, but because Commerce had more state-permutations than I could prototype by hand inside a Shape Up cycle. <b>It was a math problem.</b></aside>
+  </div>
+
+  <div class="artifact reveal">
+    <div class="artifact-cap"><b>Fig. 3.1</b>Plan picker · four states.<br/><br/>One component, four real product configurations. Billing-cycle toggle, brand theme, locale + currency, and a regional promo override — each one a Variable swap, no fork. Tap a tab to switch state.</div>
+    <div class="artifact-fig" style="padding:0;background:transparent;border:0">
+      <div class="pp-tabs" role="tablist">
+        <button data-pp="annual" class="on" role="tab">Peacock · Annual</button>
+        <button data-pp="monthly" role="tab">Peacock · Monthly</button>
+        <button data-pp="stt" role="tab">SkyShowtime · Brand swap</button>
+        <button data-pp="now" role="tab">NOW · Promo override</button>
+      </div>
+
+      <!-- STATE: PEACOCK ANNUAL -->
+      <div class="pp-state on" data-pp-state="annual">
+        <div class="pp">
+          <div class="pp-top">
+            <div class="pp-logo"><span class="dots"><i></i><i></i><i></i></span> peacock</div>
+            <div class="pp-cta-row"><span class="signin">Sign in</span><span class="start">Start watching</span></div>
+          </div>
+          <h2 class="pp-h">Pick the plan that's right for you</h2>
+          <div class="pp-toggle"><div class="pp-toggle-inner"><span>Plans</span><span class="on">Bundles</span></div></div>
+          <div class="pp-popular"><span>Most popular</span></div>
+          <div class="pp-cards">
+            <div class="pp-card">
+              <h6>Premium</h6>
+              <div class="desc">Stream the latest hits, live sports &amp; news with limited ads.</div>
+              <ul>
+                <li>Hit movies, shows &amp; Originals</li>
+                <li>NFL, Premier League &amp; more</li>
+                <li>Live news, late night, daytime</li>
+                <li class="x">No ads on most shows &amp; movies</li>
+                <li class="x">Download &amp; watch offline</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">$83.99/yr</span><button>Select</button></div>
+              <div class="annual-note">Save 16% · billed annually as one payment</div>
+            </div>
+            <div class="pp-card featured">
+              <h6>Premium Plus</h6>
+              <div class="desc">Stream with no ads on most shows, plus offline downloads.</div>
+              <ul>
+                <li>Hit movies, shows &amp; Originals</li>
+                <li>NFL, Premier League &amp; more</li>
+                <li>Live news, late night, daytime</li>
+                <li>No ads on most shows &amp; movies</li>
+                <li>Download &amp; watch offline</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">$139.99/yr</span><button>Select</button></div>
+              <div class="annual-note">Save 22% · billed annually as one payment</div>
+            </div>
+            <div class="pp-card">
+              <h6>Select</h6>
+              <div class="desc">Stream highlights from Peacock with limited ads.</div>
+              <ul>
+                <li>Select originals &amp; hit shows</li>
+                <li>Curated movie library</li>
+                <li class="x">Live sports &amp; events</li>
+                <li class="x">No ads on most shows &amp; movies</li>
+                <li class="x">Download &amp; watch offline</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">$29.99/yr</span><button>Select</button></div>
+              <div class="annual-note">Limited content · annual billing</div>
+            </div>
+          </div>
+        </div>
+        <div class="pp-meta"><span>State · annual default</span><span><b>Variable</b> billing.cycle = "annual"</span></div>
+      </div>
+
+      <!-- STATE: PEACOCK MONTHLY -->
+      <div class="pp-state" data-pp-state="monthly">
+        <div class="pp">
+          <div class="pp-top">
+            <div class="pp-logo"><span class="dots"><i></i><i></i><i></i></span> peacock</div>
+            <div class="pp-cta-row"><span class="signin">Sign in</span><span class="start">Start watching</span></div>
+          </div>
+          <h2 class="pp-h">Pick the plan that's right for you</h2>
+          <div class="pp-toggle"><div class="pp-toggle-inner"><span class="on">Plans</span><span>Bundles</span></div></div>
+          <div class="pp-popular"><span>Most popular</span></div>
+          <div class="pp-cards">
+            <div class="pp-card">
+              <h6>Premium</h6>
+              <div class="desc">Stream the latest hits, live sports &amp; news with limited ads.</div>
+              <ul>
+                <li>Hit movies, shows &amp; Originals</li>
+                <li>NFL, Premier League &amp; more</li>
+                <li>Live news, late night, daytime</li>
+                <li class="x">No ads on most shows &amp; movies</li>
+                <li class="x">Download &amp; watch offline</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">$7.99/mo</span><button>Select</button></div>
+              <div class="annual-note">Cancel anytime</div>
+            </div>
+            <div class="pp-card featured">
+              <h6>Premium Plus</h6>
+              <div class="desc">Stream with no ads on most shows, plus offline downloads.</div>
+              <ul>
+                <li>Hit movies, shows &amp; Originals</li>
+                <li>NFL, Premier League &amp; more</li>
+                <li>Live news, late night, daytime</li>
+                <li>No ads on most shows &amp; movies</li>
+                <li>Download &amp; watch offline</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">$13.99/mo</span><button>Select</button></div>
+              <div class="annual-note">Cancel anytime</div>
+            </div>
+            <div class="pp-card">
+              <h6>Select</h6>
+              <div class="desc">Stream highlights from Peacock with limited ads.</div>
+              <ul>
+                <li>Select originals &amp; hit shows</li>
+                <li>Curated movie library</li>
+                <li class="x">Live sports &amp; events</li>
+                <li class="x">No ads on most shows &amp; movies</li>
+                <li class="x">Download &amp; watch offline</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">$2.99/mo</span><button>Select</button></div>
+              <div class="annual-note">Cancel anytime</div>
+            </div>
+          </div>
+        </div>
+        <div class="pp-meta"><span>State · monthly toggle</span><span><b>Variable</b> billing.cycle = "monthly"</span></div>
+      </div>
+
+      <!-- STATE: SKYSHOWTIME (brand swap, EUR) -->
+      <div class="pp-state" data-pp-state="stt">
+        <div class="pp theme-stt">
+          <div class="pp-top">
+            <div class="pp-logo">★ skyshowtime</div>
+            <div class="pp-cta-row"><span class="signin">Inloggen</span><span class="start">Begin nu</span></div>
+          </div>
+          <h2 class="pp-h">Kies het abonnement dat bij je past</h2>
+          <div class="pp-toggle"><div class="pp-toggle-inner"><span>Maandelijks</span><span class="on">Jaarlijks</span></div></div>
+          <div class="pp-popular"><span>Populair</span></div>
+          <div class="pp-cards">
+            <div class="pp-card">
+              <h6>Standard</h6>
+              <div class="desc">Stream films, series en originals met advertenties.</div>
+              <ul>
+                <li>Hits, series en originals</li>
+                <li>Twee schermen tegelijk</li>
+                <li class="x">Geen advertenties</li>
+                <li class="x">Downloaden en offline kijken</li>
+                <li class="x">4K Ultra HD</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">€59,90/jr</span><button>Kies</button></div>
+              <div class="annual-note">€4,99 · jaarlijks gefactureerd</div>
+            </div>
+            <div class="pp-card featured">
+              <h6>Premium</h6>
+              <div class="desc">Geen advertenties · downloads · 4K Ultra HD waar beschikbaar.</div>
+              <ul>
+                <li>Hits, series en originals</li>
+                <li>Vier schermen tegelijk</li>
+                <li>Geen advertenties</li>
+                <li>Downloaden en offline kijken</li>
+                <li>4K Ultra HD waar beschikbaar</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">€95,90/jr</span><button>Kies</button></div>
+              <div class="annual-note">€7,99 · jaarlijks gefactureerd</div>
+            </div>
+            <div class="pp-card">
+              <h6>Mobile</h6>
+              <div class="desc">Voor onderweg — alleen op telefoon en tablet.</div>
+              <ul>
+                <li>Een scherm tegelijk</li>
+                <li>Telefoon en tablet</li>
+                <li class="x">TV en webbrowser</li>
+                <li class="x">Geen advertenties</li>
+                <li class="x">4K Ultra HD</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">€35,90/jr</span><button>Kies</button></div>
+              <div class="annual-note">Alleen mobiel · jaarlijks</div>
+            </div>
+          </div>
+        </div>
+        <div class="pp-meta"><span>State · brand theme</span><span><b>Variable</b> brand = "stt" · locale = "nl-NL"</span></div>
+      </div>
+
+      <!-- STATE: NOW UK promo override -->
+      <div class="pp-state" data-pp-state="now">
+        <div class="pp theme-now">
+          <div class="pp-top">
+            <div class="pp-logo">NOW</div>
+            <div class="pp-cta-row"><span class="signin">Sign in</span><span class="start">Join NOW</span></div>
+          </div>
+          <h2 class="pp-h">Choose your Membership</h2>
+          <div class="pp-toggle"><div class="pp-toggle-inner"><span class="on">Monthly</span><span>Annual</span></div></div>
+          <div class="pp-popular"><span>Limited offer</span></div>
+          <div class="pp-cards">
+            <div class="pp-card">
+              <h6>Entertainment</h6>
+              <div class="desc">Sky Atlantic and 11 more channels, plus on-demand box sets.</div>
+              <ul>
+                <li>11 live entertainment channels</li>
+                <li>Hit box sets &amp; series</li>
+                <li class="x">Cinema · 1000+ movies</li>
+                <li class="x">Sports · live and on-demand</li>
+                <li class="x">Boost — HD &amp; 3 streams</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price"><s style="color:#999;font-weight:400">£9.99</s> £6.99/mo</span><button>Choose</button></div>
+              <div class="annual-note">First 3 months · then £9.99/mo</div>
+            </div>
+            <div class="pp-card featured">
+              <h6>Cinema</h6>
+              <div class="desc">A new Premiere every day &amp; 1,000+ movies on demand.</div>
+              <ul>
+                <li>A new Premiere every day</li>
+                <li>1,000+ movies on demand</li>
+                <li>Sky Cinema channels live</li>
+                <li class="x">Sports · live and on-demand</li>
+                <li class="x">Boost — HD &amp; 3 streams</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price"><s style="color:#999;font-weight:400">£11.99</s> £7.99/mo</span><button>Choose</button></div>
+              <div class="annual-note">First 3 months · then £11.99/mo</div>
+            </div>
+            <div class="pp-card">
+              <h6>Sports</h6>
+              <div class="desc">All 11 Sky Sports channels, live and on-demand.</div>
+              <ul>
+                <li>All 11 Sky Sports channels</li>
+                <li>Live Premier League · F1 · golf</li>
+                <li>Day &amp; month options available</li>
+                <li class="x">Cinema · 1000+ movies</li>
+                <li class="x">Boost — HD &amp; 3 streams</li>
+              </ul>
+              <div class="spacer"></div>
+              <div class="price-row"><span class="price">£34.99/mo</span><button>Choose</button></div>
+              <div class="annual-note">Cancel anytime · UK only</div>
+            </div>
+          </div>
+        </div>
+        <div class="pp-meta"><span>State · regional promo override</span><span><b>Variable</b> brand = "now" · promo.firstPeriod = "−£3"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pullquote">
+    <blockquote class="reveal">"Functional prototypes became a fast, reliable way to validate complex commerce experiences before engineering committed to full implementation."</blockquote>
+    <span class="att">— STAR · Peacock Rapid Prototyping</span>
+  </div>
+
+  <div class="outcomes">
+    <div class="outcomes-head"><span class="l">§03.4 — Outcomes</span><span>Measured · per-cycle</span></div>
+    <div class="outcomes-grid">
+      <div class="outcomes-cell"><div class="outcomes-num"><em>−</em><span data-counter data-from="0" data-to="70">70</span><em>%</em></div><div class="outcomes-cap">Prototype turnaround time, AI-assisted ceiling</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><em>−</em><span data-counter data-from="0" data-to="40">40</span><em>%</em></div><div class="outcomes-cap">Interpretation gaps + late-cycle rework</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><span data-counter data-from="0" data-to="2">2</span><em>sprints</em></div><div class="outcomes-cap">Earlier on average to product-decision</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><em>×</em><span data-counter data-from="0" data-to="4">4</span></div><div class="outcomes-cap">Brand themes modeled in a single prototype</div></div>
+    </div>
+  </div>
+
+  <div class="lessons">
+    <div class="lessons-head">— What this taught me</div>
+    <div class="lessons-body">
+      <p class="text reveal">AI tooling didn't make me a better designer. It made me <em>faster at being the designer I already was</em> — which sounds modest, but it bought us two sprints of decision-time per quarter. That's the whole game.</p>
+      <div class="stamp"><b>If I did it again</b>Library of "prototype primitives" earlier.<br/>Standardized AI prompts grounded in DS tokens.<br/>Decision-log embedded in every prototype URL.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CASE 04 =============== -->
+<div class="slate">
+  <div class="num">§02·04</div>
+  <div class="label">Case Study 04<small>Particle UI · Amount</small></div>
+  <div class="meta-r">2020 — 2023<br/>CHICAGO, IL</div>
+</div>
+<section class="section alt">
+  <div class="case-head">
+    <div class="body">
+      <p class="kicker">Case study · Amount · 2020—2023</p>
+      <h2 class="reveal">Particle UI, treated like an <em>internal SaaS.</em></h2>
+      <p class="deck reveal">Without a dedicated PM, I ran our component library and theming system as a real product — multi-cycle Shape Up roadmap, governance, accessibility productized — so partner banks could ship branded UI without reinventing primitives.</p>
+    </div>
+  </div>
+  <div class="case-meta">
+    <div><b>Role</b>Manager, Design Systems Engineering</div>
+    <div><b>Team</b>3 → 6 UI engineers</div>
+    <div><b>Customers</b>Capital One · Jenius/SMBC · Guaranteed Rate</div>
+    <div><b>Stakes</b>Enterprise-deal blocking infrastructure</div>
+  </div>
+
+  <div class="case-body">
+    <div class="col-l reveal">
+      <h3>Context</h3>
+      <p>Amount spun out of Avant and pivoted from direct-to-consumer to B2B SaaS sold to banks. Particle UI — our component library — went from "the thing the lending product is built on" to "the thing every partner deal depends on." Same library, very different politics.</p>
+      <p>Three problems landed at once: <strong>scaling an engineering team</strong>, <strong>running the program with no PM</strong>, and <strong>making accessibility a sales-enablement capability</strong> rather than a checkbox. I owned all three.</p>
+    </div>
+    <div class="col-r reveal">
+      <div class="stamp"><b>The frame.</b>Stop treating Particle UI like a support function. Treat it like an internal SaaS platform with consumers, a roadmap, a contract, and a sales pitch — because that's <span style="color:var(--coral)">what it actually was.</span></div>
+    </div>
+  </div>
+
+  <div class="thinking">
+    <div class="thinking-label">The thinking →</div>
+    <div class="thinking-body">
+      <div class="thinking-row"><span class="key">Move 01</span><span class="val">Multi-cycle Shape Up <em>pitches</em>, not sprints. Made scope, success criteria, and sequencing legible to non-DS stakeholders for the first time.</span></div>
+      <div class="thinking-row"><span class="key">Move 02</span><span class="val">Productized accessibility into a <em>tiered offering</em>. Audits, remediation, vendor coordination — turned a compliance tax into a revenue-generating capability that unblocked enterprise deals.</span></div>
+      <div class="thinking-row"><span class="key">Move 03</span><span class="val">Hired and mentored. Scaled the team from 3 to 6, with leads-within-the-team so the program wasn't <em>me</em>-shaped.</span></div>
+      <div class="thinking-row"><span class="key">Move 04</span><span class="val">Initiated DS governance: ownership, decision cadence, contribution pathways. Aligned what was in Figma with what shipped.</span></div>
+    </div>
+    <aside class="thinking-margin">Margin note —<br/>Productizing accessibility was the surprise unlock. Once procurement at Capital One saw the audit cadence as a <b>contractual deliverable</b>, the conversation shifted from "do you do a11y" to "how fast."</aside>
+  </div>
+
+  <div class="pullquote">
+    <blockquote class="reveal">"A clearer, more predictable delivery model and a design system platform that progressed from internal support work into a productized capability."</blockquote>
+    <span class="att">— STAR · Amount · Product Owner</span>
+  </div>
+
+  <div class="outcomes">
+    <div class="outcomes-head"><span class="l">§04.4 — Outcomes</span><span>Measured · 2020—2023</span></div>
+    <div class="outcomes-grid">
+      <div class="outcomes-cell"><div class="outcomes-num"><span data-counter data-from="3" data-to="6">6</span></div><div class="outcomes-cap">Engineers on Design Systems team — up from 3</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num"><span data-counter data-from="0" data-to="3">3</span></div><div class="outcomes-cap">Enterprise audits run in parallel — Capital One · Jenius · Guaranteed Rate</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num">WCAG <em>2.1 AA</em></div><div class="outcomes-cap">Embedded as platform-wide standard</div></div>
+      <div class="outcomes-cell"><div class="outcomes-num">Reactive <em>→</em> Roadmap</div><div class="outcomes-cap">Intake model shifted to multi-cycle pitches</div></div>
+    </div>
+  </div>
+
+  <div class="lessons">
+    <div class="lessons-head">— What this taught me</div>
+    <div class="lessons-body">
+      <p class="text reveal">Calling something a "product" isn't a vibe. It's a <em>roadmap, a contract, a customer, and a price.</em> Once Particle UI had all four, every conversation about it got easier — because the org finally had a way to argue about it that wasn't tribal.</p>
+      <div class="stamp"><b>If I did it again</b>Sales-enablement collateral on day one.<br/>Adoption metrics, not contribution metrics.<br/>A second lead, earlier — not when burnout demanded it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CAREER =============== -->
+<div class="slate" id="career">
+  <div class="num">§03</div>
+  <div class="label">Career arc<small>Twenty years on the same problem</small></div>
+  <div class="meta-r">2012 → 2025<br/>NY · CHI · ATL</div>
+</div>
+<section class="section">
+  <div class="career-table">
+    <div class="career-row">
+      <div class="yr">'23—'25 · 2.5 yrs</div>
+      <div class="ti"><h3>Senior Design Engineer · Commerce Product</h3><div class="org">Peacock · NBCUniversal</div><div class="loc">New York, NY</div></div>
+      <div class="desc">Atlas multi-brand foundation. Design QA program. Rapid prototyping with Variables-driven Figma + code + AI workflows. Web, client/TV, four brands global.</div>
+    </div>
+    <div class="career-row">
+      <div class="yr">'20—'23 · 3.2 yrs</div>
+      <div class="ti"><h3>Manager, Design Systems Engineering</h3><div class="org">Amount</div><div class="loc">Chicago, IL</div></div>
+      <div class="desc">Particle UI as internal platform. Shape Up roadmap. Productized accessibility — Allyant/A360 vendor program for Capital One, Jenius/SMBC, Guaranteed Rate. Team 3 → 6.</div>
+    </div>
+    <div class="career-row">
+      <div class="yr">'16—'19 · 3.1 yrs</div>
+      <div class="ti"><h3>Manager, UI Development</h3><div class="org">Avant</div><div class="loc">Chicago, IL</div></div>
+      <div class="desc">White-label component system for partner applications. Standardized BEM/SASS architecture. Established responsive, accessibility, and design-governance standards org-wide.</div>
+    </div>
+    <div class="career-row">
+      <div class="yr">'15—'16 · 1.3 yrs</div>
+      <div class="ti"><h3>Senior Front-End Developer · Tech Lead</h3><div class="org">Studio 424</div><div class="loc">Chicago, IL</div></div>
+      <div class="desc">Cross-disciplinary teams shipping user-centered branded digital programs. Owned design-to-production bridge across engagements. Reusable libraries, coding standards.</div>
+    </div>
+    <div class="career-row">
+      <div class="yr">'13—'15 · 2.0 yrs</div>
+      <div class="ti"><h3>Senior Front-End Developer</h3><div class="org">VSA Partners</div><div class="loc">Chicago, IL</div></div>
+      <div class="desc">Data-driven, accessible templates and style guides for major consumer brands. Wireframes → pixel-perfect production sites with sophisticated interactive animation. Early DS thinking.</div>
+    </div>
+    <div class="career-row tail">
+      <div class="yr">'12—'13 · 0.8 yrs</div>
+      <div class="ti"><h3>Senior Front-End Developer</h3><div class="org">Crate &amp; Barrel</div><div class="loc">Northbrook, IL</div></div>
+      <div class="desc">Led the responsive redesign of the desktop site, extending to CB2 and Land of Nod. Mobile-first, adaptive front-end code; unified multi-brand consumer experience.</div>
+    </div>
+  </div>
+
+  <div class="career-foot">
+    <p class="span">Twenty years on the same problem: <em>multi-brand consumer UI, made to ship.</em></p>
+    <div class="legend">
+      <p><b>Education</b> Art Institute of Atlanta · BFA · Magna Cum Laude · Best Portfolio, Web Design &amp; Interactive Media.</p>
+      <p style="margin-top:14px"><b>Stack</b> HTML · CSS · JS · React · TypeScript · Figma Variables · Dev Mode · Code Connect · Token Studio · Storybook · BEM/SASS · Claude Code · Cursor · Figma MCP · Jira · Shape Up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============== HOW I WORK =============== -->
+<div class="slate" id="how">
+  <div class="num">§04</div>
+  <div class="label">How I work<small>Six principles, in plain English</small></div>
+  <div class="meta-r">Process<br/>Collaboration</div>
+</div>
+<section class="section alt">
+  <p class="how-lede">Calm under pressure. <em>Specific</em> in feedback. Allergic to ceremony.</p>
+  <div class="how-grid">
+    <div class="how-card"><span class="num">/01</span><h3>I work at the bridge.</h3><p>Designers know I read their files; engineers know I read their PRs. The fastest way to lose a fidelity argument is to be the loudest person in the room with the least context. I bring context.</p></div>
+    <div class="how-card"><span class="num">/02</span><h3>Decisions over deliverables.</h3><p>The artifact's job is to make the decision. A prototype that doesn't change anyone's mind was a misallocation of your week. I default to "what's the smallest prototype that decides this?"</p></div>
+    <div class="how-card"><span class="num">/03</span><h3>Operationally serious.</h3><p>I run programs the way a PM runs programs. Roadmap, definition of done, durable doc, calendar slot. Ad-hoc is a great way to look busy and ship nothing.</p></div>
+    <div class="how-card"><span class="num">/04</span><h3>AI is a tool, not a worldview.</h3><p>Early adopter — Claude Code, Figma MCP, Cursor — because Commerce had more state-permutations than I could prototype by hand. Outputs are always grounded in system standards, never released raw.</p></div>
+    <div class="how-card"><span class="num">/05</span><h3>Mentor by default.</h3><p>Scaled the Amount team 3 → 6 by promoting leads-within-the-team. The point of a senior person isn't to be the bottleneck. It's to remove the need for one.</p></div>
+    <div class="how-card"><span class="num">/06</span><h3>Outside-my-lane willing.</h3><p>Wrote the Shape Up pitches. Ran the accessibility vendor relationship. Did sales-enablement collateral when procurement asked. Senior is a stance, not a title.</p></div>
+  </div>
+</section>
+
+<!-- =============== CONTACT =============== -->
+<div class="slate" id="contact">
+  <div class="num">§05</div>
+  <div class="label">Contact<small>Available immediately</small></div>
+  <div class="meta-r"><span style="color:var(--coral)">▸ open</span><br/>NEW YORK, NY</div>
+</div>
+<section class="section">
+  <span class="contact-mark">Let's <em>talk.</em></span>
+  <div class="contact-foot">
+    <div class="contact-list">
+      <a href="mailto:joe.kocovsky@gmail.com"><span>joe.kocovsky@gmail.com<small>Email · best for first contact</small></span><span class="arr">↗</span></a>
+      <a href="https://www.linkedin.com/in/joekocovsky/" target="_blank" rel="noopener"><span>linkedin / joekocovsky<small>LinkedIn · longer history</small></span><span class="arr">↗</span></a>
+      <a href="tel:+14044223629"><span>(404) 422-3629<small>Phone · works</small></span><span class="arr">↗</span></a>
+      <a href="https://joeko.net" target="_blank" rel="noopener"><span>joeko.net<small>Long-form site</small></span><span class="arr">↗</span></a>
+    </div>
+    <aside class="contact-aside">
+      <b>For hiring managers</b>
+      <p>I'm based in Astoria, NY. Open to senior IC and player-coach roles at design-led product organizations — Design Engineer, Senior Design Engineer, Design Systems Lead, UX Engineer.</p>
+      <p>Strong preference for teams that take design systems seriously enough to staff them, take design QA seriously enough to put it on the calendar, and take prototyping seriously enough to fund it.</p>
+      <p class="now">Available immediately.</p>
+    </aside>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div>
+    <b>Colophon</b>
+    Set in Playfair Display (headings) · Inter (body / UI) · JetBrains Mono (marginalia). Hand-built single HTML file.
+  </div>
+  <div>
+    <b>Palette</b>
+    Onyx #0E0E0E · Bone #F2E7D0 · Coral #FF5544 · Amber #F2A23B · Teal #3B6E6E
+    <div class="swatches" aria-hidden="true">
+      <span style="background:#0E0E0E"></span>
+      <span style="background:#F2E7D0"></span>
+      <span style="background:#FF5544"></span>
+      <span style="background:#F2A23B"></span>
+      <span style="background:#3B6E6E"></span>
+    </div>
+  </div>
+  <div>
+    <b>© Joe Kocovsky · 2026</b>
+    Updated · May 2026<br/>
+    New York, NY
+  </div>
+</footer>
+
+<div class="cursor-coord" id="cursorCoord" aria-hidden="true">x:000 y:000 · onyx</div>
+
+<script>
+/* GRID FILL */
+(function fillAtlasGrids(){
+  document.querySelectorAll('.atlas-panel-stage .grid').forEach((grid)=>{
+    const total = 64;
+    const lit = parseInt(grid.dataset.gridFill || '0', 10);
+    const brandCount = parseInt(grid.dataset.gridBrand || '0', 10);
+    const indices = [];
+    for(let i=0;i<total;i++) indices.push(i);
+    let seed = lit*9301 + brandCount*49297 + 233280;
+    function rand(){ seed = (seed*9301+49297) % 233280; return seed/233280; }
+    for(let i=indices.length-1;i>0;i--){
+      const j = Math.floor(rand()*(i+1));
+      [indices[i],indices[j]] = [indices[j],indices[i]];
+    }
+    const litRatio = Math.min(lit, total) / total;
+    const litShare = Math.round(litRatio*total);
+    const litCells = new Set(indices.slice(0, litShare));
+    // brand share is proportional to brand presence
+    const brandRatio = Math.min(brandCount, total) / total;
+    const brandShare = Math.round(brandRatio * total * 0.32);
+    const brandCells = new Set(indices.slice(0, brandShare));
+    for(let i=0;i<total;i++){
+      const c = document.createElement('div');
+      c.className = 'cell';
+      if(litCells.has(i)) c.classList.add('lit');
+      if(brandCells.has(i)) c.classList.add('brand');
+      grid.appendChild(c);
+    }
+  });
+})();
+
+/* MOTION */
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if(window.gsap && !reduced){
+  gsap.registerPlugin(ScrollTrigger);
+
+  const heroLines = document.querySelectorAll('.hero-statement .line span');
+  gsap.set(heroLines, {yPercent: 110});
+  gsap.to(heroLines, { yPercent: 0, duration: 1.1, ease: 'power3.out', stagger: 0.08, delay: 0.25 });
+
+  document.querySelectorAll('.reveal').forEach(el=>{
+    gsap.fromTo(el, {opacity:0, y:24}, {
+      opacity:1, y:0, duration:0.9, ease:'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' }
+    });
+  });
+
+  const track = document.getElementById('atlasTrack');
+  const horiz = document.querySelector('.atlas-horiz');
+  const prog = document.getElementById('atlasProg');
+  if(track && horiz){
+    const panels = track.querySelectorAll('.atlas-panel');
+    const totalDistance = (panels.length - 1) * window.innerWidth;
+    gsap.to(track, {
+      x: () => -totalDistance,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: horiz,
+        start: 'top top',
+        end: () => '+=' + totalDistance,
+        scrub: 0.5,
+        pin: true,
+        invalidateOnRefresh: true,
+        anticipatePin: 1,
+        onUpdate: (st)=>{ if(prog) prog.style.width = (st.progress*100).toFixed(2)+'%'; }
+      }
+    });
+    ScrollTrigger.refresh();
+  }
+
+  document.querySelectorAll('[data-counter]').forEach(el=>{
+    const from = parseFloat(el.dataset.from || '0');
+    const to = parseFloat(el.dataset.to || '0');
+    const obj = {v: from};
+    el.textContent = String(Math.round(from));
+    ScrollTrigger.create({
+      trigger: el, start: 'top 90%',
+      onEnter: ()=>{
+        gsap.to(obj, { v: to, duration: 1.6, ease: 'power3.out',
+          onUpdate: ()=> { el.textContent = String(Math.round(obj.v)); }
+        });
+      }
+    });
+  });
+}else if(reduced){
+  document.querySelectorAll('.hero-statement .line span').forEach(s=>s.style.transform='none');
+  document.querySelectorAll('[data-counter]').forEach(el=>{ el.textContent = el.dataset.to || el.textContent; });
+}
+
+/* PLAN PICKER TABS */
+(function planPickerTabs(){
+  const tabs = document.querySelectorAll('.pp-tabs button[data-pp]');
+  const states = document.querySelectorAll('.pp-state[data-pp-state]');
+  if(!tabs.length) return;
+  tabs.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const target = btn.dataset.pp;
+      tabs.forEach(b=>b.classList.toggle('on', b===btn));
+      states.forEach(s=>s.classList.toggle('on', s.dataset.ppState===target));
+    });
+  });
+})();
+
+/* CURSOR COORD */
+(function cursorCoord(){
+  const el = document.getElementById('cursorCoord');
+  if(!el) return;
+  const palettes = ['onyx','bone','coral','amber','teal'];
+  let p = 0; let t = 0;
+  document.addEventListener('mousemove', (e)=>{
+    const x = String(Math.round(e.clientX)).padStart(4,'0');
+    const y = String(Math.round(e.clientY)).padStart(4,'0');
+    if(performance.now() - t > 500){ p = (p+1) % palettes.length; t = performance.now(); }
+    el.textContent = `x:${x} y:${y} · ${palettes[p]}`;
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
