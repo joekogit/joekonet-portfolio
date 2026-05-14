@@ -50,7 +50,7 @@ export function Experience() {
   ];
 
   return (
-    <section id="work" className="pt-6 md:pt-8 pb-20 px-6 lg:px-12 bg-gray-50 scroll-mt-[126px]">
+    <section id="work" className="pt-6 md:pt-8 pb-20 px-6 lg:px-12 bg-gray-50 dark:bg-[#161616] scroll-mt-[126px] transition-colors duration-200">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl lg:text-5xl font-light mb-16" style={{ fontFamily: 'var(--font-family-base)' }}>
           Career Experience
@@ -61,7 +61,7 @@ export function Experience() {
               <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-[#6BA3D0]"></div>
               <div className="mb-4">
                 <h3 className="text-xl lg:text-2xl font-normal mb-2">{exp.title}</h3>
-                <div className="flex flex-wrap gap-x-4 gap-y-1 text-gray-600">
+                <div className="flex flex-wrap gap-x-4 gap-y-1 text-gray-600 dark:text-gray-400">
                   <span className="font-medium">{exp.company}</span>
                   <span>{exp.location}</span>
                   <span className="text-[#6BA3D0]">{exp.period}</span>
@@ -69,7 +69,7 @@ export function Experience() {
               </div>
               <ul className="space-y-3">
                 {exp.highlights.map((highlight, i) => (
-                  <li key={i} className="text-gray-700 leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-[#6BA3D0]">
+                  <li key={i} className="text-gray-700 dark:text-gray-300 leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0 before:text-[#6BA3D0]">
                     {highlight}
                   </li>
                 ))}

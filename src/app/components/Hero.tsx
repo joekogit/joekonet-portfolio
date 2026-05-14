@@ -23,18 +23,18 @@ export function Hero() {
           </div>
           
           <div className="prose prose-lg max-w-none">
-            <p className="text-gray-600 leading-relaxed mb-6">
-              Strategic and dynamic Senior Design Technologist with extensive experience owning design systems as a product, 
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              Strategic and dynamic Senior Design Technologist with extensive experience owning design systems as a product,
               transforming complex digital ecosystems into cohesive, scalable, user-centered experiences.
             </p>
-            <p className="text-gray-600 leading-relaxed">
-              Specialized in enterprise design systems, multi-brand theming, scalable token architectures, and cross-platform 
+            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              Specialized in enterprise design systems, multi-brand theming, scalable token architectures, and cross-platform
               design governance. Expert in bridging Figma, tokens, prototypes, and production-ready UI.
             </p>
           </div>
           <div className="flex gap-4 mt-8 clear-both">
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               onClick={(e) => {
                 e.preventDefault();
                 const element = document.querySelector('#contact');
@@ -46,11 +46,11 @@ export function Hero() {
             >
               Get in Touch
             </a>
-            <a 
-              href="https://www.linkedin.com/in/joekocovsky/" 
-              target="_blank" 
+            <a
+              href="https://www.linkedin.com/in/joekocovsky/"
+              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 border border-gray-300 hover:border-[#6BA3D0] hover:text-[#6BA3D0] transition-colors focus:outline-none focus:ring-2 focus:ring-[#6BA3D0] focus:ring-offset-2"
+              className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 hover:border-[#6BA3D0] hover:text-[#6BA3D0] dark:hover:border-[#9BC4E2] dark:hover:text-[#9BC4E2] dark:text-gray-300 transition-colors focus:outline-none focus:ring-2 focus:ring-[#6BA3D0] focus:ring-offset-2"
             >
               LinkedIn
             </a>
