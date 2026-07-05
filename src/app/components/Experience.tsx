@@ -1,16 +1,30 @@
 export function Experience() {
   const experiences = [
     {
+      title: "Principal AI Field Architect",
+      company: "Boomi",
+      location: "Remote (NYC)",
+      period: "Jun 2026 — Present",
+      highlights: [
+        "Lead technical visionary for Boomi's most strategic enterprise AI engagements, partnering with C-suite stakeholders (CIO, CTO, CDO) to shape long-term AI adoption roadmaps",
+        "Run executive visioning sessions and innovation workshops that connect autonomous AI capabilities to real business problems",
+        "Architect flagship solutions for complex, high-stakes accounts, including net-new agentic processes built on Boomi's integration and automation platform",
+        "Serve as technical authority across the full solution lifecycle, from initial discovery through delivery by Forward Deployed Engineering teams",
+        "Relay field insights to product and engineering to shape the agent inventory and product roadmap, and mentor Solutions Consultants and Forward Deployed Engineers on the Find, Prove, Deliver engagement model"
+      ]
+    },
+    {
       title: "Senior Design Engineer – Commerce Product",
       company: "Peacock (NBCUniversal)",
       location: "New York, NY",
       period: "Jun 2023 — Dec 2025",
       highlights: [
         "Led design systems as a product, scaling multi-brand commerce systems across web, mobile, and TV",
-        "Expanded Atlas Design System from single-brand to multi-brand foundation supporting Peacock, SkyShowtime, NOW, and Showmax",
-        "Designed tiered Variables-based token architecture separating design intent from brand theming",
+        "Expanded Atlas Design System from single-brand to multi-brand, growing components from 50 to 150+ and enabling rapid international rollout",
+        "Engineered tiered Variables-based token architecture separating design intent from brand theming, reducing design-to-development translation time by 30–50%",
         "Standardized component APIs, variants, and interactive states to bridge Figma designs to production UI",
-        "Established contribution pathways and governance workflows to maintain consistent production-ready UI across global markets"
+        "Established contribution pathways, Design QA standards, and governance workflows to maintain consistent production-ready UI across global markets",
+        "Applied AI-assisted workflows to accelerate prototyping, iteration, and product decision-making"
       ]
     },
     {
@@ -43,8 +57,28 @@ export function Experience() {
       period: "Aug 2015 — Nov 2016",
       highlights: [
         "Led cross-disciplinary teams delivering user-centered branding and digital programs",
-        "Served as technical lead for high-profile clients, overseeing front-end architecture and component standardization",
+        "Served as technical lead for high-profile clients including Nike, The Joyce Foundation, and Clean Energy Trust, overseeing front-end architecture and component standardization",
         "Built reusable component libraries and coding standards to improve maintainability and cross-project efficiency"
+      ]
+    },
+    {
+      title: "Senior Front-End Developer",
+      company: "VSA Partners",
+      location: "Chicago, IL",
+      period: "Sep 2013 — Aug 2015",
+      highlights: [
+        "Crafted data-driven web experiences for leading consumer brands, converting wireframes and prototypes into pixel-perfect, production-ready marketing websites",
+        "Constructed reusable templates, standardized component libraries, and accessible front-end patterns, applying early design systems principles"
+      ]
+    },
+    {
+      title: "Senior Front-End Developer",
+      company: "Crate and Barrel",
+      location: "Chicago, IL",
+      period: "Dec 2012 — Sep 2013",
+      highlights: [
+        "Led the responsive redesign of Crate and Barrel's desktop website and extended the experience to CB2 and Land of Nod",
+        "Engineered mobile-first, adaptive front-end code and established responsive frameworks for a unified, scalable multi-brand digital experience"
       ]
     }
   ];

@@ -11,7 +11,7 @@ export default function App() {
   const { isDark, toggle } = useDarkMode();
 
   useEffect(() => {
-    document.title = 'Joe Kocovsky - Design Systems & UX Engineering Leader';
+    document.title = 'Joe Kocovsky - Principal AI Field Architect';
   }, []);
 
   return (

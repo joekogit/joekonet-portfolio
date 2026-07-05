@@ -12,8 +12,8 @@ export function Footer() {
               Let's Connect
             </h2>
             <p className="text-lg text-white/90 mb-8 leading-relaxed">
-              I'm always interested in discussing design systems, UX engineering, 
-              and opportunities to create impactful digital experiences.
+              I'm always interested in discussing enterprise AI strategy, agentic systems,
+              design engineering, and opportunities to create impactful digital experiences.
             </p>
           </div>
           

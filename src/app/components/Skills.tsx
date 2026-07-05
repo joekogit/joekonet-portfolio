@@ -1,55 +1,57 @@
 export function Skills() {
   const skillCategories = [
     {
-      title: "Design Systems & Governance",
+      title: "AI & Agentic Systems",
+      skills: [
+        "AI Solution Architecture",
+        "Agentic AI Systems",
+        "LangChain",
+        "CrewAI",
+        "LangGraph",
+        "MCP-Based Tooling",
+        "Claude Code",
+        "AI-Assisted Prototyping",
+        "AI Adoption Roadmaps",
+        "Agentic Process Design"
+      ]
+    },
+    {
+      title: "Enterprise Integration & Architecture",
+      skills: [
+        "Enterprise Integration (iPaaS)",
+        "API Architecture",
+        "Data Pipelines",
+        "Integration Patterns",
+        "Solution Lifecycle Ownership",
+        "Technical Discovery",
+        "Find, Prove, Deliver Engagement Model"
+      ]
+    },
+    {
+      title: "Design Systems & UX Engineering",
       skills: [
         "Design Tokens",
         "Multi-Brand Theming",
         "Component Libraries",
-        "Variant Standardization",
-        "Token Strategy",
-        "Governance Frameworks",
-        "Operational Workflows",
-        "Design-to-Production Alignment",
-        "Figma-to-UI Integration",
-        "Functional Prototyping"
-      ]
-    },
-    {
-      title: "UX & Accessibility",
-      skills: [
-        "High-Fidelity UI Design",
-        "User Experience Design",
-        "Interaction Design",
-        "Responsive Layouts",
-        "Edge-Case Handling",
-        "Accessibility Program Leadership",
-        "WCAG 2.1 AA Compliance",
-        "Design QA"
-      ]
-    },
-    {
-      title: "Design–Engineering Integration",
-      skills: [
-        "Production-Ready UI Alignment",
+        "Figma Variables & Code Connect",
+        "Rapid Functional Prototyping",
         "HTML/CSS/JS",
-        "Figma Variables",
-        "Dev Mode",
-        "Code-Connect Workflows",
-        "Cross-Platform Consistency"
+        "WCAG 2.1 AA Accessibility",
+        "Design QA",
+        "Design-to-Production Alignment"
       ]
     },
     {
-      title: "Collaboration & Delivery",
+      title: "Executive Engagement & Leadership",
       skills: [
-        "Jira Workflow Design",
+        "C-Suite Stakeholder Engagement",
+        "Executive Visioning Sessions",
+        "Innovation Workshops",
         "Roadmap Planning",
-        "Cross-Functional Collaboration",
         "Team Leadership",
         "Mentorship",
-        "Design System Evangelism",
-        "Knowledge Documentation",
-        "Scalable Adoption"
+        "Cross-Functional Collaboration",
+        "Knowledge Documentation"
       ]
     }
   ];

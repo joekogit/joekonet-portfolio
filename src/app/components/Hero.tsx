@@ -1,4 +1,4 @@
-import photo from '@/assets/08388ff8071b36d1fedcb3b0bd9ab14a8222d318.png';
+import photo from '@/assets/joe-kocovsky-headshot.jpg';
 
 export function Hero() {
   return (
@@ -9,7 +9,7 @@ export function Hero() {
             Joe Kocovsky
           </h1>
           <p className="text-xl lg:text-2xl text-[#6BA3D0] mb-8 font-light">
-            Design Systems & UX Engineering Leader
+            Principal AI Field Architect at Boomi
           </p>
           
           {/* Photo floats right on mobile/tablet, wraps description text */}
@@ -24,12 +24,13 @@ export function Hero() {
           
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              Strategic and dynamic Senior Design Technologist with extensive experience owning design systems as a product,
-              transforming complex digital ecosystems into cohesive, scalable, user-centered experiences.
+              I lead technical strategy for Boomi's most complex enterprise AI engagements — partnering with C-suite
+              stakeholders to shape AI adoption roadmaps and architecting agentic solutions on Boomi's intelligent
+              integration and automation platform.
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Specialized in enterprise design systems, multi-brand theming, scalable token architectures, and cross-platform
-              design governance. Expert in bridging Figma, tokens, prototypes, and production-ready UI.
+              I bring 20 years at the intersection of design and engineering to this work: I prototype fast, think in
+              systems, and translate fluently between executives and builders.
             </p>
           </div>
           <div className="flex gap-4 mt-8 clear-both">

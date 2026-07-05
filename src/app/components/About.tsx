@@ -7,20 +7,22 @@ export function About() {
         </h2>
         <div className="prose prose-lg max-w-none space-y-6">
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-            I'm a design systems leader who bridges the gap between design and engineering. With over a decade
-            of experience, I've specialized in transforming complex digital ecosystems into cohesive, scalable
-            experiences that empower teams and delight users.
+            As Principal AI Field Architect at Boomi, I lead technical strategy for our most complex enterprise
+            engagements. I work with C-level stakeholders to shape AI adoption roadmaps, architect agentic solutions
+            on Boomi's intelligent integration and automation platform, and guide engagements from the first
+            visioning session through delivery. I also mentor Solutions Consultants and Forward Deployed Engineers,
+            helping scale how we deliver AI solutions in the field.
           </p>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-            My expertise lies in building and scaling enterprise-grade design systems that serve as strategic
-            products. I've led multi-brand theming initiatives, established token architectures, and created
-            governance frameworks that ensure consistency across global platforms while maintaining the flexibility
-            teams need to innovate.
+            I bring 20 years at the intersection of design and engineering to this work — scaling multi-brand design
+            systems at Peacock, leading design systems engineering teams at Amount and Avant, and shipping for brands
+            like Nike and Crate &amp; Barrel. That background means I prototype fast, think in systems, and translate
+            fluently between executives and builders.
           </p>
           <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg">
-            What drives me is the intersection of design craft and technical implementation. I believe the best
-            design systems emerge when we deeply understand both the creative vision and the engineering constraints,
-            creating solutions that are not just beautiful, but buildable and maintainable at scale.
+            Along the way I've gone deep on the agentic development ecosystem: agent frameworks like LangChain,
+            CrewAI, and LangGraph, MCP-based tooling, Claude Code, and the enterprise integration patterns — APIs,
+            iPaaS, data pipelines — that connect autonomous AI capabilities to real business problems.
           </p>
 
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
