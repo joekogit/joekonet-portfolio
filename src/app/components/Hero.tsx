@@ -12,16 +12,17 @@ export function Hero() {
             Principal AI Field Architect at Boomi
           </p>
           
-          {/* Photo floats right on mobile/tablet, wraps description text */}
-          <div className="relative float-right ml-6 mb-4 lg:hidden">
+          {/* Photo floats right on mobile/tablet, wraps description text.
+              Rounded square matches the desktop treatment. */}
+          <div className="relative float-right ml-5 mb-4 w-[45%] max-w-[300px] sm:ml-8 lg:hidden">
             <div className="absolute -inset-4 bg-[#6BA3D0] opacity-10 blur-2xl"></div>
-            <img 
-              src={photo} 
-              alt="Joe Kocovsky" 
-              className="relative w-[195px] rounded-full shadow-2xl"
+            <img
+              src={photo}
+              alt="Joe Kocovsky"
+              className="relative w-full rounded-lg shadow-2xl"
             />
           </div>
-          
+
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
               I lead technical strategy for Boomi's most complex enterprise AI engagements — partnering with C-suite
@@ -33,7 +34,7 @@ export function Hero() {
               systems, and translate fluently between executives and builders.
             </p>
           </div>
-          <div className="flex gap-4 mt-8 clear-both">
+          <div className="flex flex-wrap gap-4 mt-8 clear-both">
             <a
               href="#contact"
               onClick={(e) => {

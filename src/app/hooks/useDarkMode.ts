@@ -6,7 +6,8 @@ export function useDarkMode() {
       const stored = localStorage.getItem('theme');
       if (stored) return stored === 'dark';
     } catch {}
-    return window.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
+    // Dark mode is the default for first-time visitors.
+    return true;
   });
 
   useEffect(() => {

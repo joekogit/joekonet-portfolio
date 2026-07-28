@@ -5,6 +5,18 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Joe Kocovsky - Principal AI Field Architect</title>
+      <!-- Apply the theme before first paint so dark mode never flashes light. -->
+      <script>
+        (function () {
+          var isDark = true;
+          try {
+            var stored = localStorage.getItem('theme');
+            if (stored) isDark = stored === 'dark';
+          } catch (e) {}
+          document.documentElement.classList.toggle('dark', isDark);
+          document.documentElement.style.backgroundColor = isDark ? '#111111' : '#ffffff';
+        })();
+      </script>
     </head>
 
     <body>
