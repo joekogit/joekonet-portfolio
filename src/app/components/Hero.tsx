@@ -25,13 +25,16 @@ export function Hero() {
 
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              I lead technical strategy for Boomi's most complex enterprise AI engagements — partnering with C-suite
-              stakeholders to shape AI adoption roadmaps and architecting agentic solutions on Boomi's intelligent
-              integration and automation platform.
+              I've spent the better part of two decades on the parts of software nobody is supposed to notice. A button
+              that behaves identically in six countries. A color that means the same thing to a designer in Figma and a
+              compiler in production. I'm drawn to the layer underneath, where a thousand small agreements either hold
+              or quietly come apart.
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              I bring 20 years at the intersection of design and engineering to this work: I prototype fast, think in
-              systems, and translate fluently between executives and builders.
+              At Peacock I rebuilt that layer for a streaming service in the middle of going global. Now I do it for AI,
+              sitting across from CIOs whose agent demos all work beautifully and don't yet add up to a system. The
+              demos are the easy part. The question I care about is the one underneath: what happens when there are a
+              hundred of them, and someone has to trust the answer.
             </p>
           </div>
           <div className="flex flex-wrap gap-4 mt-8 clear-both">
