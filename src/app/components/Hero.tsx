@@ -26,9 +26,9 @@ export function Hero() {
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
               I've spent more than 20 years on the parts of the web nobody is supposed to notice. A button that behaves
-              identically in six countries. A color that means the same thing to a designer in Figma and a compiler in
-              production. I'm drawn to the layer underneath, where a thousand small agreements either hold or quietly
-              come apart.
+              identically in six countries. A color that means the same thing to a designer in Figma and a browser on
+              someone's phone. I'm drawn to the layer underneath, where a thousand small agreements either hold or
+              quietly come apart.
             </p>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
               At Peacock I rebuilt that layer for a streaming service in the middle of going global. Now I do it for AI,
