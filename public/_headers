@@ -1,0 +1,16 @@
+# Netlify serves .webmanifest as application/octet-stream by default. Nothing here sends
+# X-Content-Type-Options, so a browser is currently free to sniff it and does — but that
+# is luck rather than correctness, and it breaks the moment nosniff is added. An unparsed
+# manifest is a home-screen install with no name and no icon.
+/site.webmanifest
+  Content-Type: application/manifest+json; charset=utf-8
+
+# Icons change only when the source drawing does. Browsers cache favicons aggressively
+# and out of band, so a bounded max-age is what makes a redraw actually show up rather
+# than waiting on eviction.
+/icon.svg
+  Cache-Control: public, max-age=604800, must-revalidate
+/favicon.ico
+  Cache-Control: public, max-age=604800, must-revalidate
+/icons/*
+  Cache-Control: public, max-age=604800, must-revalidate
