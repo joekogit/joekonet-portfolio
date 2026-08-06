@@ -5,6 +5,22 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Joe Kocovsky - Principal AI Field Architect</title>
+
+      <!--
+        Icons. Two drawings, not one scaled: `icon.svg` is the two slashes alone, because
+        the mark's dots are ~1.3px at 16px and render as grey mush, while the touch icon
+        carries the whole mark. Regenerate both with `node scripts/make-icons.mjs`;
+        the drawings live in scripts/, never edit the PNGs.
+
+        PNG for apple-touch, and 180px: iOS ignores an SVG here outright and falls back to
+        a screenshot of the page.
+      -->
+      <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+      <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+      <link rel="manifest" href="/site.webmanifest" />
+      <meta name="theme-color" content="#111111" />
+
       <!-- Apply the theme before first paint so dark mode never flashes light. -->
       <script>
         (function () {
