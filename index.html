@@ -1,43 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joe Kocovsky - Principal AI Field Architect</title>
+    <meta name="description" content="Joe Kocovsky, Principal AI Field Architect at Boomi. Twenty years on the parts of the web nobody is supposed to notice: front-end, design systems, and now enterprise AI agents." />
+    <link rel="canonical" href="https://joeko.net/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Joe Kocovsky - Principal AI Field Architect" />
+    <meta property="og:description" content="Twenty years on the parts of the web nobody is supposed to notice: front-end, design systems, and now enterprise AI agents." />
+    <meta property="og:url" content="https://joeko.net/" />
+    <meta property="og:image" content="https://joeko.net/icons/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Joe Kocovsky - Principal AI Field Architect</title>
+    <!--
+      Icons. Two drawings, not one scaled: `icon.svg` is the two slashes alone, because
+      the mark's dots are ~1.3px at 16px and render as grey mush, while the touch icon
+      carries the whole mark. Regenerate both with `node scripts/make-icons.mjs`;
+      the drawings live in scripts/, never edit the PNGs.
 
-      <!--
-        Icons. Two drawings, not one scaled: `icon.svg` is the two slashes alone, because
-        the mark's dots are ~1.3px at 16px and render as grey mush, while the touch icon
-        carries the whole mark. Regenerate both with `node scripts/make-icons.mjs`;
-        the drawings live in scripts/, never edit the PNGs.
+      PNG for apple-touch, and 180px: iOS ignores an SVG here outright and falls back to
+      a screenshot of the page.
+    -->
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1215" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F8F9FB" />
 
-        PNG for apple-touch, and 180px: iOS ignores an SVG here outright and falls back to
-        a screenshot of the page.
-      -->
-      <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-      <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="manifest" href="/site.webmanifest" />
-      <meta name="theme-color" content="#111111" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet" href="/src/styles/site.css" />
+  </head>
 
-      <!-- Apply the theme before first paint so dark mode never flashes light. -->
-      <script>
-        (function () {
-          var isDark = true;
-          try {
-            var stored = localStorage.getItem('theme');
-            if (stored) isDark = stored === 'dark';
-          } catch (e) {}
-          document.documentElement.classList.toggle('dark', isDark);
-          document.documentElement.style.backgroundColor = isDark ? '#111111' : '#ffffff';
-        })();
-      </script>
-    </head>
-
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+  <body>
+    <div class="shell">
+      <aside class="docnav">
+        <div class="brand">
+          <a href="#top" aria-label="joeko.net"><svg class="wordmark" width="530" height="75" viewBox="0 0 530 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M134.704 23.579C134.704 19.951 137.194 17.534 140.68 17.534C144.165 17.534 146.656 19.951 146.656 23.579V68.623C146.656 72.251 144.165 74.67 140.68 74.67C137.194 74.67 134.704 72.251 134.704 68.623V23.579ZM147.402 7.17896C147.402 10.58 144.414 13.451 140.68 13.451C137.11 13.451 133.957 10.504 133.957 7.17896C133.957 4.08196 137.11 1.20996 140.68 1.20996C144.248 1.20996 147.402 4.00396 147.402 7.17896Z" fill="currentColor"/>
+    <path d="M160.184 38.1661C160.184 43.3811 163.172 49.1251 169.645 49.1251C176.118 49.1251 179.106 43.3811 179.106 38.1661C179.106 32.9521 176.202 27.0561 169.645 27.0561C163.088 27.0561 160.184 32.9521 160.184 38.1661ZM191.058 38.1661C191.058 49.5021 182.509 59.1001 169.645 59.1001C156.781 59.1001 148.233 49.5021 148.233 38.1661C148.233 27.1321 157.029 17.0801 169.645 17.0801C182.261 17.0801 191.058 27.1321 191.058 38.1661Z" fill="currentColor"/>
+    <path d="M224.508 34.4621C223.844 29.7021 220.524 26.1501 214.963 26.1501C209.651 26.1501 206.083 29.8521 205.501 34.4621H224.508ZM205.751 41.7181C206.581 47.0841 211.479 49.5791 217.039 49.5791C223.18 49.5791 227.413 45.1951 230.567 45.1951C233.139 45.1951 235.463 47.5381 235.463 49.8801C235.463 54.5661 224.84 59.1001 215.959 59.1001C202.513 59.1001 193.551 50.1831 193.551 38.1661C193.551 27.1311 202.348 17.0791 214.963 17.0791C227.911 17.0791 236.459 27.8121 236.459 36.8801C236.459 40.1311 234.883 41.7181 231.231 41.7181H205.751Z" fill="currentColor"/>
+    <path d="M239.034 6.04498C239.034 2.41698 241.523 0 245.009 0C248.495 0 250.986 2.41698 250.986 6.04498V31.44L264.098 19.876C266.007 18.215 267.917 17.533 269.494 17.533C272.482 17.533 274.557 20.027 274.557 22.447C274.557 24.032 273.975 25.319 272.233 26.753L261.61 35.371L275.635 50.335C276.714 51.467 277.13 52.752 277.13 53.963C277.13 56.835 274.639 59.1 271.486 59.1C269.327 59.1 267.667 57.892 265.758 55.776L251.151 39.376H250.986V52.601C250.986 56.229 248.495 58.647 245.009 58.647C241.523 58.647 239.034 56.229 239.034 52.601V6.04498Z" fill="currentColor"/>
+    <path d="M287.423 38.1661C287.423 43.3811 290.411 49.1251 296.886 49.1251C303.359 49.1251 306.346 43.3811 306.346 38.1661C306.346 32.9521 303.442 27.0561 296.886 27.0561C290.329 27.0561 287.423 32.9521 287.423 38.1661ZM318.298 38.1661C318.298 49.5021 309.75 59.1001 296.886 59.1001C284.021 59.1001 275.473 49.5021 275.473 38.1661C275.473 27.1321 284.27 17.0801 296.886 17.0801C309.499 17.0801 318.298 27.1321 318.298 38.1661Z" fill="currentColor"/>
+    <path d="M341.2 27.4801C335.531 27.4801 332.736 33.4511 332.736 38.5891C332.736 43.6521 335.531 49.5481 341.2 49.5481C347.172 49.5481 349.741 43.5011 349.741 38.2121C349.741 32.9201 347.02 27.4801 341.2 27.4801ZM360.624 53.0241C360.624 56.6521 358.356 59.0711 355.181 59.0711C352.159 59.0711 350.421 57.4071 349.741 54.5361C347.7 57.8601 343.468 59.5241 339.765 59.5241C328.805 59.5241 321.853 49.3211 321.853 39.0431C321.853 28.4611 327.672 17.5041 339.385 17.5041C343.167 17.5041 346.869 18.7871 349.741 21.2831V6.46808C349.741 2.84108 352.007 0.423096 355.181 0.423096C358.356 0.423096 360.624 2.84108 360.624 6.46808V53.0241Z" fill="var(--accent)"/>
+    <path d="M373.096 38.5892C373.096 43.8032 375.817 49.5482 381.713 49.5482C387.609 49.5482 390.328 43.8032 390.328 38.5892C390.328 33.3752 387.684 27.4802 381.713 27.4802C375.741 27.4802 373.096 33.3752 373.096 38.5892ZM401.213 38.5892C401.213 49.9252 393.427 59.5242 381.713 59.5242C369.997 59.5242 362.213 49.9252 362.213 38.5892C362.213 27.5552 370.224 17.5042 381.713 17.5042C393.2 17.5042 401.213 27.5552 401.213 38.5892Z" fill="var(--accent)"/>
+    <path d="M406.958 27.933H404.54C401.594 27.933 399.778 26.1191 399.778 23.1721C399.778 20.4511 401.819 18.4091 404.54 18.4091H406.958V11.9091C406.958 8.28306 409.226 5.86401 412.4 5.86401C415.575 5.86401 417.84 8.28306 417.84 11.9091V18.4091H420.939C423.736 18.4091 426.155 19.6931 426.155 23.1721C426.155 26.5721 423.736 27.933 420.939 27.933H417.84V53.024C417.84 56.652 415.575 59.072 412.4 59.072C409.226 59.072 406.958 56.652 406.958 53.024V27.933Z" fill="var(--accent)"/>
+    <path d="M428.197 24.0021C428.197 20.3741 430.465 17.9572 433.64 17.9572C436.437 17.9572 438.249 19.4692 438.627 21.9622C440.744 19.0142 443.995 17.5032 449.132 17.5032C457.673 17.5032 464.023 22.9432 464.023 32.1652V53.0251C464.023 56.6511 461.755 59.0712 458.58 59.0712C455.405 59.0712 453.137 56.6511 453.137 53.0251V34.0541C453.137 28.9901 449.963 26.5732 446.033 26.5732C441.575 26.5732 439.08 29.8221 439.08 34.0541V53.0251C439.08 56.6511 436.812 59.0712 433.64 59.0712C430.465 59.0712 428.197 56.6511 428.197 53.0251V24.0021Z" fill="var(--accent)"/>
+    <path d="M494.559 34.8862C493.955 30.1252 490.931 26.5732 485.866 26.5732C481.031 26.5732 477.781 30.2752 477.25 34.8862H494.559ZM477.478 42.1412C478.234 47.5062 482.693 50.0012 487.757 50.0012C493.349 50.0012 497.202 45.6182 500.075 45.6182C502.419 45.6182 504.535 47.9612 504.535 50.3032C504.535 54.9892 494.862 59.5251 486.775 59.5251C474.531 59.5251 466.366 50.6052 466.366 38.5892C466.366 27.5542 474.379 17.5032 485.866 17.5032C497.655 17.5032 505.442 28.2352 505.442 37.3032C505.442 40.5542 504.005 42.1412 500.679 42.1412H477.478Z" fill="var(--accent)"/>
+    <path d="M510.432 27.933H508.013C505.068 27.933 503.252 26.1191 503.252 23.1721C503.252 20.4511 505.292 18.4091 508.013 18.4091H510.432V11.9091C510.432 8.28306 512.7 5.86401 515.874 5.86401C519.046 5.86401 521.314 8.28306 521.314 11.9091V18.4091H524.413C527.21 18.4091 529.626 19.6931 529.626 23.1721C529.626 26.5721 527.21 27.933 524.413 27.933H521.314V53.024C521.314 56.652 519.046 59.072 515.874 59.072C512.7 59.072 510.432 56.652 510.432 53.024V27.933Z" fill="var(--accent)"/>
+    <path d="M21.604 3.7981C27.08 3.7981 31.593 7.80812 31.593 12.8961C31.593 17.9741 27.08 21.9881 21.604 21.9881C16.128 21.9881 11.617 17.9741 11.617 12.8961C11.617 7.80812 16.128 3.7981 21.604 3.7981Z" fill="var(--accent)"/>
+    <path d="M82.029 0.22998L51.955 60.381H21.88L51.955 0.22998H82.029Z" fill="var(--accent)"/>
+    <path d="M119.533 0.22998L89.459 60.381H59.385L89.459 0.22998H119.533Z" fill="var(--accent)"/>
+    <path d="M9.986 27.144C15.463 27.144 19.974 31.157 19.974 36.235C19.974 41.321 15.463 45.329 9.986 45.329C4.512 45.329 0 41.321 0 36.235C0 31.157 4.512 27.144 9.986 27.144Z" fill="var(--accent)"/>
+    </svg></a>
+          <span class="ver">joekocovsky v7.0.0</span>
+        </div>
+        <nav aria-label="Sections"><ul>
+          <li><a href="#playground">At a glance</a></li>
+          <li><a href="#work">How I work</a></li>
+          <li><a href="#tokens">Tokens</a></li>
+          <li><a href="#releases">Releases</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul></nav>
+      </aside>
+    
+      <main class="content" id="top">
+        <header class="titleblock">
+          <h1 class="reveal" style="--i:0">Joe Kocovsky</h1>
+          <div class="badges reveal" style="--i:1">
+            <span class="badge stable">Stable</span>
+            <span class="badge">v7.0.0</span>
+            <span class="badge accent">In production at Boomi</span>
+            <span class="badge">New York, NY</span>
+          </div>
+          <p class="reveal" style="--i:2">Principal AI Field Architect at Boomi. I've spent 20 years on the parts of the web nobody is supposed to notice, first as a front-end developer, then running design systems, and now helping enterprises build AI agents they can still govern and trust once there are hundreds of them.</p>
+          <div class="contact reveal" style="--i:3">
+            <div><span class="p">email</span><span class="v" id="email">hello@joeko.net</span><button type="button" class="copy">Copy</button></div>
+            <div><span class="p">linkedin</span><a class="v" href="https://www.linkedin.com/in/joekocovsky/" target="_blank" rel="noopener">linkedin.com/in/joekocovsky</a></div>
+          </div>
+        </header>
+    
+        <section class="doc reveal" id="playground" style="--i:4">
+          <h2>At a glance</h2>
+          <p class="lead">These controls change the tokens for the whole page, not just the card. Drag the width and the card adapts on its own.</p>
+          <div class="playground">
+            <div class="controls">
+              <div class="ctl"><span class="lbl">theme</span>
+                <div class="seg" role="group" aria-label="Theme" id="theme">
+                  <button type="button" data-v="system" aria-pressed="true">System</button><button type="button" data-v="light" aria-pressed="false">Light</button><button type="button" data-v="dark" aria-pressed="false">Dark</button>
+                </div>
+              </div>
+              <div class="ctl"><span class="lbl">accent</span>
+                <div class="swatches" id="accent">
+                  <button type="button" data-v="brand" aria-pressed="true" title="Brand cyan" style="background:#58B7DE"></button>
+                  <button type="button" data-v="site" aria-pressed="false" title="Site blue" style="background:#6BA3D0"></button>
+                  <button type="button" data-v="moss" aria-pressed="false" title="Moss" style="background:#8FB36A"></button>
+                  <button type="button" data-v="amber" aria-pressed="false" title="Amber" style="background:#E0A84A"></button>
+                </div>
+              </div>
+              <div class="ctl"><span class="lbl">radius</span>
+                <div class="seg" role="group" aria-label="Radius" id="radius">
+                  <button type="button" data-v="0px" aria-pressed="false">0</button><button type="button" data-v="6px" aria-pressed="true">6</button><button type="button" data-v="14px" aria-pressed="false">14</button>
+                </div>
+              </div>
+              <div class="ctl"><span class="lbl">density</span>
+                <div class="seg" role="group" aria-label="Density" id="density">
+                  <button type="button" data-v="0.75" aria-pressed="false">Compact</button><button type="button" data-v="1" aria-pressed="true">Default</button>
+                </div>
+              </div>
+              <div class="ctl wide"><label for="width">width <span id="widthv" class="mono">fill</span></label>
+                <input class="w" type="range" id="width" min="320" max="1100" step="10" value="1100">
+              </div>
+            </div>
+            <div class="stage">
+              <div class="frame" id="frame">
+                <span class="ruler" id="ruler"></span>
+                <article class="card">
+                  <img class="photo" src="/src/assets/joe-kocovsky-headshot.jpg" alt="Joe Kocovsky" width="886" height="886">
+                  <div>
+                    <h3>Joe Kocovsky</h3>
+                    <p class="role">Principal AI Field Architect</p>
+                    <p class="co">Boomi, New York</p>
+                    <p class="blurb">I ran design systems at Peacock and Amount. Now I help enterprises make their AI agents work together, which turns out to be the same problem.</p>
+                    <div class="actions"><a class="btn primary" href="mailto:hello@joeko.net">Email</a><a class="btn" href="https://www.linkedin.com/in/joekocovsky/" target="_blank" rel="noopener">LinkedIn</a></div>
+                  </div>
+                  <aside class="releases">
+                    <div class="k">recent releases</div>
+                    <ul>
+                      <li><code>7.0</code><span><b>Boomi</b>, AI field architecture</span></li>
+                      <li><code>6.0</code><span><b>Peacock</b>, Atlas design system</span></li>
+                      <li><code>5.0</code><span><b>Amount</b>, Particle UI</span></li>
+                      <li><code>4.0</code><span><b>Avant</b>, white-label theming</span></li>
+                    </ul>
+                  </aside>
+                </article>
+              </div>
+            </div>
+            <div class="variant-note"><span>variant: <b id="variant">expanded</b></span><span>breakpoint: <b id="bp"></b></span></div>
+          </div>
+        </section>
+    
+        <section class="doc reveal" id="work" style="--i:5">
+          <h2>How I work</h2>
+          <div class="beliefs">
+            <p><b>The hard part is never the code.</b>It's getting a team of designers and engineers to agree on what a button is, then keeping that agreement alive for three roadmap cycles. Systems work is mostly diplomacy with a component library attached.</p>
+            <p><b>The underlying experience matters most.</b>Component architecture, performance, optimization, accessibility. The stuff nobody notices until it's wrong. That's where I started and I never left.</p>
+            <p><b>One good agent is easy.</b>The work is making hundreds of them coherent, governable, and worth trusting. That's what I spend my days on now.</p>
+            <p><b>Fewer repeated arguments.</b>At Peacock the token rebuild cut design-to-dev translation time by about a third. Good number. What I cared about more was that teams stopped relitigating the same decisions every sprint.</p>
+          </div>
+        </section>
+    
+        <section class="doc" id="tokens">
+          <h2>Tokens</h2>
+          <p class="lead">The whole page is built from these. Change something above and watch them follow.</p>
+          <div class="sub" id="color">
+          <h3>Color</h3>
+          <p class="lead">One accent and some cool greys. The values below are live, so they follow whatever you picked above.</p>
+          <div class="tablewrap"><table>
+            <thead><tr><th>token</th><th>value</th><th>used for</th></tr></thead>
+            <tbody>
+              <tr><td><span class="sw" style="background:var(--bg)"></span><code>--bg</code></td><td class="mono" data-token="--bg"></td><td>Page and card background</td></tr>
+              <tr><td><span class="sw" style="background:var(--surface)"></span><code>--surface</code></td><td class="mono" data-token="--surface"></td><td>Panels</td></tr>
+              <tr><td><span class="sw" style="background:var(--fg)"></span><code>--fg</code></td><td class="mono" data-token="--fg"></td><td>Text, wordmark</td></tr>
+              <tr><td><span class="sw" style="background:var(--muted)"></span><code>--muted</code></td><td class="mono" data-token="--muted"></td><td>Secondary text, labels</td></tr>
+              <tr><td><span class="sw" style="background:var(--rule)"></span><code>--rule</code></td><td class="mono" data-token="--rule"></td><td>Borders, dividers</td></tr>
+              <tr><td><span class="sw" style="background:var(--accent)"></span><code>--accent</code></td><td class="mono" data-token="--accent"></td><td>Buttons, current item, role line</td></tr>
+            </tbody>
+          </table></div>
+          </div>
+    
+          <div class="sub" id="type">
+          <h3>Type</h3>
+          <p class="lead">Onest, one family for everything. Mono only for token values.</p>
+          <div class="specimen">
+            <div><span class="k" data-size="--t-7">--t-7</span><span class="t7">Joe Kocovsky</span></div>
+            <div><span class="k" data-size="--t-6">--t-6</span><span class="t6">Back when responsive and Atomic Design were still new ideas</span></div>
+            <div><span class="k" data-size="--t-5">--t-5</span><span class="t5">Systems work is mostly diplomacy with a component library attached.</span></div>
+            <div><span class="k" data-size="--t-4">--t-4</span><span class="t4">Anyone can build one impressive agent. Very few have made hundreds of them coherent.</span></div>
+            <div><span class="k" data-size="--t-3">--t-3</span><span class="t3">A button that behaves identically in six countries. A color that means the same thing to a designer in Figma and a browser on someone's phone.</span></div>
+            <div><span class="k" data-size="--t-2">--t-2</span><span class="t2">Principal AI Field Architect, Boomi, New York</span></div>
+          </div>
+          </div>
+    
+          <div class="sub" id="space">
+          <h3>Space</h3>
+          <p class="lead">Eight steps on a 4px base. The density control scales all of them at once.</p>
+          <div class="spacing" id="spacing">
+            <div><span>--s-1</span><i style="width:var(--s-1)"></i></div>
+            <div><span>--s-2</span><i style="width:var(--s-2)"></i></div>
+            <div><span>--s-3</span><i style="width:var(--s-3)"></i></div>
+            <div><span>--s-4</span><i style="width:var(--s-4)"></i></div>
+            <div><span>--s-5</span><i style="width:var(--s-5)"></i></div>
+            <div><span>--s-6</span><i style="width:var(--s-6)"></i></div>
+            <div><span>--s-7</span><i style="width:var(--s-7)"></i></div>
+            <div><span>--s-8</span><i style="width:var(--s-8)"></i></div>
+          </div>
+          </div>
+    
+          <div class="sub" id="motion">
+          <h3>Motion</h3>
+          <p class="lead">Three durations, two curves. If your system asks for reduced motion, nothing moves.</p>
+          <div class="motion" id="motion-demo">
+            <div class="track"><span>--dur-fast 150ms</span><div class="lane"><div class="dot" style="--d:150ms;--e:var(--ease-out)"></div></div><span>hover, press, focus</span></div>
+            <div class="track"><span>--dur-base 250ms</span><div class="lane"><div class="dot" style="--d:250ms;--e:var(--ease-out)"></div></div><span>theme, radius, density</span></div>
+            <div class="track"><span>--dur-slow 600ms</span><div class="lane"><div class="dot" style="--d:600ms;--e:var(--ease-out)"></div></div><span>width, page load</span></div>
+            <div class="track"><span>--ease-spring</span><div class="lane"><div class="dot" style="--d:600ms;--e:var(--ease-spring)"></div></div><span>photo entrance, swatch hover</span></div>
+            <div><button type="button" class="mini" id="replay">Replay</button></div>
+          </div>
+          </div>
+        </section>
+    
+        <section class="doc" id="releases">
+          <h2>Releases</h2>
+          <p class="lead">Major versions only. Open the notes if you want the detail.</p>
+          <div class="rel">
+            <article><div class="v">v7.0.0<small>2026, Remote (NYC)</small></div><div><h3>Boomi <span>Principal AI Field Architect</span></h3><p>Executive visioning with CIOs and CTOs, then the agentic architecture that comes out of it, from discovery through delivery.</p>
+              <details><summary>notes</summary><ul><li>Technical lead on Boomi's most strategic enterprise AI engagements, shaping long-term AI adoption roadmaps with C-suite stakeholders</li><li>Architect net-new agentic processes on Boomi's integration and automation platform</li><li>Technical authority across the full solution lifecycle, through delivery by Forward Deployed Engineering teams</li><li>Relay field insights back to product and engineering; mentor Solutions Consultants and Forward Deployed Engineers</li></ul></details></div></article>
+            <article><div class="v">v6.0.0<small>2023, New York</small></div><div><h3>Peacock, NBCUniversal <span>Senior Design Engineer, Commerce Product</span></h3><p>Took Atlas from one brand to many, 50 to 150+ components. Rebuilt the token architecture and cut design-to-development translation time 30 to 50%.</p>
+              <details><summary>notes</summary><ul><li>Led design systems as a product across web, mobile, and TV commerce</li><li>Engineered a tiered, Variables-based token architecture separating design intent from brand theming</li><li>Standardized component APIs, variants, and interactive states from Figma to production UI</li><li>Set up contribution pathways, Design QA standards, and governance for global markets</li><li>Used AI-assisted workflows to speed up prototyping and product decisions</li></ul></details></div></article>
+            <article><div class="v">v5.0.0<small>2020, Chicago</small></div><div><h3>Amount <span>Manager, Design Systems Engineering</span></h3><p>Built and led the team behind Particle UI. Governance, accessibility standards, and the roadmap.</p>
+              <details><summary>notes</summary><ul><li>Led and scaled the Design Systems Engineering team, owning roadmap, governance, and adoption</li><li>Drove accessibility and UX standards and mentored engineers</li><li>Wrote multi-cycle roadmaps and Shape Up pitches with scope, success criteria, and sequencing</li><li>Started design system governance aligning Figma with production</li></ul></details></div></article>
+            <article><div class="v">v4.0.0<small>2016, Chicago</small></div><div><h3>Avant <span>Manager, UI Development</span></h3><p>Ran the UI team and built a white-label component system so partner apps could be rebranded without being forked.</p>
+              <details><summary>notes</summary><ul><li>Directed front-end design strategy and the UI development team</li><li>Designed the white-label component system for partner brand theming</li><li>Standardized CSS architecture on BEM and SASS</li></ul></details></div></article>
+            <article><div class="v">v3.0.0<small>2015, Chicago</small></div><div><h3>Studio 424 <span>Senior Front-End Developer, Technical Lead</span></h3><p>Front-end lead for Nike, The Joyce Foundation, and Clean Energy Trust.</p>
+              <details><summary>notes</summary><ul><li>Led cross-disciplinary teams on branding and digital programs</li><li>Owned front-end architecture and component standards for high-profile clients</li><li>Built reusable component libraries and coding standards</li></ul></details></div></article>
+            <article><div class="v">v2.0.0<small>2013, Chicago</small></div><div><h3>VSA Partners <span>Senior Front-End Developer</span></h3><p>Production sites for consumer brands, and the first reusable templates I'd now call a design system.</p>
+              <details><summary>notes</summary><ul><li>Turned wireframes and prototypes into pixel-accurate, production-ready marketing sites</li><li>Built reusable templates, standardized component libraries, and accessible front-end patterns</li></ul></details></div></article>
+            <article><div class="v">v1.0.0<small>2012, Chicago</small></div><div><h3>Crate and Barrel <span>Senior Front-End Developer</span></h3><p>Led the responsive redesign of the desktop site and extended it to CB2 and Land of Nod.</p>
+              <details><summary>notes</summary><ul><li>Led the responsive redesign of the desktop website</li><li>Mobile-first, adaptive front-end code and a shared responsive framework across three brands</li></ul></details></div></article>
+            <article><div class="v">v0.1.0<small>pre-release</small></div><div><h3>The Art Institute of Atlanta <span>BFA, magna cum laude</span></h3><p>Best Portfolio for Web Design and Interactive Media.</p></div></article>
+          </div>
+        </section>
+    
+        <section class="doc" id="contact">
+          <h2>Contact</h2>
+          <p class="lead">Happy to talk about enterprise AI, agentic systems, or design engineering. Email is fastest.</p>
+          <div class="contact">
+            <div><span class="p">email</span><span class="v">hello@joeko.net</span><button type="button" class="copy">Copy</button></div>
+            <div><span class="p">linkedin</span><a class="v" href="https://www.linkedin.com/in/joekocovsky/" target="_blank" rel="noopener">linkedin.com/in/joekocovsky</a></div>
+          </div>
+          <p class="a11y" style="margin-top:var(--s-5)"><b>A note on this page.</b> It meets WCAG 2.1 AA in both themes with the default swatches, works entirely from the keyboard, respects reduced motion, and doesn't save anything you change here.</p>
+        </section>
+    
+        <footer class="colophon">
+          <span>© 2026 Joe Kocovsky</span>
+          <a href="https://www.linkedin.com/in/joekocovsky/" target="_blank" rel="noopener">LinkedIn</a>
+          <span>joekocovsky v7.0.0</span>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
