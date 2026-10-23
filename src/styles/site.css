@@ -172,7 +172,10 @@ footer.colophon a:hover { color: var(--accent); border-color: var(--accent); }
 @media (prefers-reduced-motion: reduce) { .motion.play .dot { animation: none; left: calc(100% - 20px); } * { transition: none !important; } }
 
 @media (min-width: 960px) {
-  .shell { grid-template-columns: 220px 1fr; }
+  :root { --t-1: 13px; --t-2: 15px; --t-3: 18px; --t-4: 22px; --t-5: 31px; --t-6: 44px; --t-7: 62px; }
+  .shell { grid-template-columns: 240px 1fr; }
+  .content { max-width: 1232px; }
+  .contact { max-width: 740px; }
   .docnav { position: sticky; top: env(safe-area-inset-top, 0px); height: 100vh; border-bottom: 0; border-right: 1px solid var(--rule); padding-block: var(--s-6); padding-right: var(--s-4); padding-left: max(24px, env(safe-area-inset-left, 0px)); }
   .docnav .brand { flex-direction: column; align-items: flex-start; gap: 8px; }
   .docnav ul { flex-direction: column; margin-top: var(--s-6); gap: 2px; }
