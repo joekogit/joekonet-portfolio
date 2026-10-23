@@ -111,18 +111,13 @@
                   <button type="button" data-v="0.75" aria-pressed="false">Compact</button><button type="button" data-v="1" aria-pressed="true">Default</button>
                 </div>
               </div>
-              <div class="ctl wide"><span class="lbl">frame</span>
-                <div class="seg" role="group" aria-label="Frame width presets" id="presets">
-                  <button type="button" data-v="360" aria-pressed="false">Phone</button><button type="button" data-v="768" aria-pressed="false">Tablet</button><button type="button" data-v="1100" aria-pressed="true">Desktop</button>
-                </div>
-                <label for="width" class="slider-label">width <span id="widthv">fill</span>, <span id="variant">expanded</span></label>
-                <input class="w" type="range" id="width" min="320" max="1100" step="1" value="1100">
+              <div class="ctl wide"><label for="width">width <span id="widthv" class="mono">fill</span></label>
+                <input class="w" type="range" id="width" min="320" max="1100" step="10" value="1100">
               </div>
             </div>
             <div class="stage">
-              <div class="frame-wrap" id="framewrap">
+              <div class="frame" id="frame">
                 <span class="ruler" id="ruler"></span>
-                <div class="frame" id="frame">
                 <article class="card">
                   <img class="photo" src="/src/assets/joe-kocovsky-headshot.jpg" alt="Joe Kocovsky" width="886" height="886">
                   <div>
@@ -142,10 +137,9 @@
                     </ul>
                   </aside>
                 </article>
-                </div>
               </div>
             </div>
-            <div class="variant-note"><span>breakpoint: <b id="bp"></b></span><span id="scalenote"></span></div>
+            <div class="variant-note"><span>variant: <b id="variant">expanded</b></span><span>breakpoint: <b id="bp"></b></span></div>
           </div>
         </section>
     
@@ -208,12 +202,13 @@
     
           <div class="sub" id="motion">
           <h3>Motion</h3>
-          <p class="lead">Three durations, two curves, running on a loop while this is on screen. Pull a dot back and let go. If your system asks for reduced motion, nothing moves.</p>
+          <p class="lead">Three durations, two curves. If your system asks for reduced motion, nothing moves.</p>
           <div class="motion" id="motion-demo">
             <div class="track"><span>--dur-fast 150ms</span><div class="lane"><div class="dot" style="--d:150ms;--e:var(--ease-out)"></div></div><span>hover, press, focus</span></div>
             <div class="track"><span>--dur-base 250ms</span><div class="lane"><div class="dot" style="--d:250ms;--e:var(--ease-out)"></div></div><span>theme, radius, density</span></div>
             <div class="track"><span>--dur-slow 600ms</span><div class="lane"><div class="dot" style="--d:600ms;--e:var(--ease-out)"></div></div><span>width, page load</span></div>
             <div class="track"><span>--ease-spring</span><div class="lane"><div class="dot" style="--d:600ms;--e:var(--ease-spring)"></div></div><span>photo entrance, swatch hover</span></div>
+            <div><button type="button" class="mini" id="replay">Replay</button></div>
           </div>
           </div>
         </section>

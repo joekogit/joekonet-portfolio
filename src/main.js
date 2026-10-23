@@ -28,93 +28,21 @@
     else { root.style.setProperty('--accent', map[v]); root.style.setProperty('--accent-ink', '#0F1215'); }
   });
 
-  var frame = document.getElementById('frame'), wrap = document.getElementById('framewrap'), width = document.getElementById('width'), widthv = document.getElementById('widthv'), ruler = document.getElementById('ruler'), variant = document.getElementById('variant'), bp = document.getElementById('bp'), scalenote = document.getElementById('scalenote'), presets = document.getElementById('presets');
-  var scale = 1;
-  function setWidth(){
-    var w = +width.value, fill = w >= 1100, avail = wrap.clientWidth, target = fill ? avail : w;
-    scale = Math.min(1, avail / target);
-    frame.classList.toggle('scaled', scale < 1);
-    if (scale < 1) { frame.style.maxWidth = 'none'; frame.style.width = target + 'px'; frame.style.transform = 'scale(' + scale + ')'; }
-    else { frame.style.width = ''; frame.style.transform = ''; frame.style.maxWidth = fill ? '100%' : target + 'px'; }
-    widthv.textContent = fill ? 'fill' : w + 'px';
-    presets.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', +b.dataset.v === w ? 'true' : 'false'); });
-    syncHeight(); update();
-  }
-  function syncHeight(){ wrap.style.height = scale < 1 ? Math.round(frame.offsetHeight * scale) + 'px' : ''; }
-  function update(){
-    var w = frame.offsetWidth;
-    ruler.textContent = w + 'px' + (scale < 1 ? ' at ' + Math.round(scale * 100) + '%' : '');
-    variant.textContent = w >= 880 ? 'expanded, with releases' : w >= 520 ? 'expanded' : 'stacked';
-    bp.textContent = w >= 880 ? '880px and up' : w >= 520 ? '520 to 879px' : 'under 520px';
-    scalenote.textContent = scale < 1 ? 'shown at ' + Math.round(scale * 100) + '% to fit this screen' : '';
-  }
-  width.addEventListener('input', setWidth);
-  presets.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ width.value = b.dataset.v; setWidth(); }); });
-  window.addEventListener('resize', setWidth);
-  if ('ResizeObserver' in window) new ResizeObserver(function(){ syncHeight(); update(); }).observe(frame);
-  frame.addEventListener('transitionend', update);
-  setWidth();
+  var frame = document.getElementById('frame'), width = document.getElementById('width'), widthv = document.getElementById('widthv'), ruler = document.getElementById('ruler'), variant = document.getElementById('variant');
+  function setWidth(){ var w = +width.value; frame.style.maxWidth = w >= 1100 ? '100%' : w + 'px'; widthv.textContent = w >= 1100 ? 'fill' : w + 'px'; requestAnimationFrame(update); }
+  var bp = document.getElementById('bp');
+  function update(){ var w = frame.getBoundingClientRect().width; ruler.textContent = Math.round(w) + 'px'; variant.textContent = w >= 880 ? 'expanded, with releases' : w >= 520 ? 'expanded' : 'stacked'; bp.textContent = w >= 880 ? '880px and up' : w >= 520 ? '520 to 879px' : 'under 520px'; }
+  width.addEventListener('input', setWidth); window.addEventListener('resize', update); setWidth();
+  if (!reduce) { var t = 0; (function tick(){ update(); if (t++ < 40) requestAnimationFrame(tick); })(); }
 
   refresh();
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', refresh);
   new MutationObserver(refresh).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
-  // Motion demo. Dots travel out at their own token duration, hold, ease back together, and repeat while
-  // on screen. Grab one, pull it back, let go, and it snaps home at a speed that matches how far you pulled.
-  var motion = document.getElementById('motion-demo'), dots = Array.prototype.slice.call(motion.querySelectorAll('.dot'));
-  var running = false, timer = null, anims = [], held = null;
-  function endOf(d){ return d.parentElement.clientWidth - 20; }
-  function clearAnims(){ anims.forEach(function(a){ a.cancel(); }); anims = []; }
-  function travel(){
-    if (!running || held) return;
-    clearAnims(); var longest = 0;
-    dots.forEach(function(d){
-      var cs = getComputedStyle(d), dur = parseFloat(cs.getPropertyValue('--d')) || 300, ease = cs.getPropertyValue('--e').trim() || 'ease-out';
-      longest = Math.max(longest, dur);
-      anims.push(d.animate([{ left: '2px' }, { left: endOf(d) + 'px' }], { duration: dur, easing: ease, fill: 'forwards' }));
-    });
-    timer = setTimeout(back, longest + 1200);
-  }
-  function back(){
-    if (!running || held) return;
-    clearAnims();
-    dots.forEach(function(d){ anims.push(d.animate([{ left: endOf(d) + 'px' }, { left: '2px' }], { duration: 700, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' })); });
-    timer = setTimeout(travel, 1400);
-  }
-  function start(){ if (running || reduce || !dots[0].animate) return; running = true; travel(); }
-  function stop(){ running = false; clearTimeout(timer); }
-  if (!reduce) {
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting && !document.hidden) start(); else stop(); }); }, { threshold: .3 }).observe(motion);
-    } else start();
-    document.addEventListener('visibilitychange', function(){ if (document.hidden) stop(); else { var r = motion.getBoundingClientRect(); if (r.bottom > 0 && r.top < innerHeight) start(); } });
-
-    dots.forEach(function(d){
-      var startX = 0, startLeft = 0;
-      d.addEventListener('pointerdown', function(ev){
-        held = d; clearTimeout(timer); clearAnims();
-        dots.forEach(function(o){ o.style.left = Math.round(o.getBoundingClientRect().left - o.parentElement.getBoundingClientRect().left) + 'px'; });
-        startX = ev.clientX; startLeft = parseFloat(d.style.left) || 2;
-        d.classList.add('held'); d.setPointerCapture(ev.pointerId); ev.preventDefault();
-      });
-      d.addEventListener('pointermove', function(ev){
-        if (held !== d) return;
-        d.style.left = Math.max(2, Math.min(endOf(d), startLeft + (ev.clientX - startX))) + 'px';
-      });
-      function release(){
-        if (held !== d) return;
-        held = null; d.classList.remove('held');
-        var from = parseFloat(d.style.left) || 2, to = endOf(d), pull = Math.max(0, to - from);
-        var dur = 120 + Math.min(300, pull * 0.6);
-        var a = d.animate([{ left: from + 'px' }, { left: to + 'px' }], { duration: dur, easing: 'cubic-bezier(.2,1.4,.3,1)', fill: 'forwards' });
-        a.onfinish = function(){ d.style.left = to + 'px'; a.cancel(); };
-        anims.push(a);
-        dots.forEach(function(o){ if (o !== d) { var oa = o.animate([{ left: o.style.left || '2px' }, { left: endOf(o) + 'px' }], { duration: 500, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }); oa.onfinish = function(){ o.style.left = endOf(o) + 'px'; oa.cancel(); }; anims.push(oa); } });
-        clearTimeout(timer); if (running) timer = setTimeout(back, 1600);
-      }
-      d.addEventListener('pointerup', release); d.addEventListener('pointercancel', release);
-    });
-  }
+  var motion = document.getElementById('motion-demo');
+  function play(){ motion.classList.remove('play'); void motion.offsetWidth; motion.classList.add('play'); }
+  document.getElementById('replay').addEventListener('click', play);
+  if ('IntersectionObserver' in window) { var once = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { play(); once.disconnect(); } }); }, { threshold: .4 }); once.observe(motion); } else play();
 
   document.querySelectorAll('.copy').forEach(function(btn){
     btn.addEventListener('click', function(){
