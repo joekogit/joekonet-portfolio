@@ -51,7 +51,7 @@ section.doc > .lead, .sub > .lead { color: var(--muted); margin: 0 0 var(--s-5);
 .contact { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; max-width: 680px; font-family: var(--mono); font-size: var(--t-2); }
 .titleblock .contact { margin-top: var(--s-4); }
 .contact > div { background: var(--surface); display: flex; align-items: center; gap: var(--s-2); padding: 8px 10px 8px 12px; min-width: 0; }
-.contact .p { color: var(--muted); width: 64px; flex: none; }
+.contact .p { color: var(--muted); width: 9ch; flex: none; }
 .contact .v { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .contact a.v { border-bottom: 1px solid var(--rule); }
 .contact a.v:hover { color: var(--accent); border-color: var(--accent); }
