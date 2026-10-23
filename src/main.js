@@ -63,64 +63,69 @@
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', refresh);
   new MutationObserver(refresh).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
-  // Motion. Each dot runs one infinite animation: out at its token duration and curve, hold, back, hold.
-  // Nothing restarts, so nothing snaps. Off screen it pauses in place. Drag a dot back and let go and it
-  // springs home, then rejoins its loop at the hold.
-  var motion = document.getElementById('motion-demo'), dots = Array.prototype.slice.call(motion.querySelectorAll('.dot'));
-  var HOLD = 1300, easeOut = 'cubic-bezier(.2,.7,.2,1)', spring = 'cubic-bezier(.3,1.5,.4,1)';
-  var onScreen = false, canAnimate = !reduce && !!dots[0].animate;
+  // Motion. One run: the dots set off a beat apart, each at its own token duration and curve, and rest at
+  // the end. It plays once when it first comes into view, and again on Replay. Drag a dot back and let go
+  // and it springs home. Nothing loops on its own.
+  var motion = document.getElementById('motion-demo'), dots = Array.prototype.slice.call(motion.querySelectorAll('.dot')), replay = document.getElementById('replay');
+  var STAGGER = 110, easeOut = 'cubic-bezier(.2,.7,.2,1)', spring = 'cubic-bezier(.3,1.5,.4,1)';
+  var canAnimate = !reduce && !!dots[0].animate, busy = false;
   function endOf(d){ return d.parentElement.clientWidth - 20; }
-  function loopFor(d, startAt){
-    var cs = getComputedStyle(d), dur = parseFloat(cs.getPropertyValue('--d')) || 300, ease = cs.getPropertyValue('--e').trim() || easeOut;
-    var T = dur * 2 + HOLD * 2, end = endOf(d) + 'px';
-    var anim = d.animate([
-      { left: '2px', offset: 0, easing: ease },
-      { left: end, offset: dur / T, easing: 'linear' },
-      { left: end, offset: (dur + HOLD) / T, easing: easeOut },
-      { left: '2px', offset: (dur * 2 + HOLD) / T, easing: 'linear' },
-      { left: '2px', offset: 1 }
-    ], { duration: T, iterations: Infinity, fill: 'both' });
-    anim.currentTime = startAt || 0;
-    if (!onScreen) anim.pause();
-    d._loop = anim; d._dur = dur;
-    return anim;
+  function settle(d, left){ d.style.left = left + 'px'; if (d._anim) { d._anim.cancel(); d._anim = null; } }
+  function run(){
+    busy = true; replay.disabled = true; var done = 0;
+    dots.forEach(function(d, i){
+      var cs = getComputedStyle(d), dur = parseFloat(cs.getPropertyValue('--d')) || 300, ease = cs.getPropertyValue('--e').trim() || easeOut;
+      settle(d, 2);
+      var a = d.animate([{ left: '2px' }, { left: endOf(d) + 'px' }], { duration: dur, easing: ease, delay: i * STAGGER, fill: 'both' });
+      d._anim = a;
+      a.onfinish = function(){ settle(d, endOf(d)); if (++done === dots.length) { busy = false; replay.disabled = false; } };
+    });
   }
-  function buildLoops(){ dots.forEach(function(d){ var t = d._loop ? d._loop.currentTime : 0; if (d._loop) d._loop.cancel(); loopFor(d, t); }); }
-  function setOnScreen(v){ onScreen = v; dots.forEach(function(d){ if (d._loop) { if (v) d._loop.play(); else d._loop.pause(); } }); }
+  function rewindThenRun(){
+    if (busy) return;
+    busy = true; replay.disabled = true; var done = 0;
+    dots.forEach(function(d, i){
+      var from = d.getBoundingClientRect().left - d.parentElement.getBoundingClientRect().left;
+      settle(d, from);
+      var a = d.animate([{ left: from + 'px' }, { left: '2px' }], { duration: 320, easing: easeOut, delay: (dots.length - 1 - i) * 60, fill: 'both' });
+      d._anim = a;
+      a.onfinish = function(){ settle(d, 2); if (++done === dots.length) run(); };
+    });
+  }
   if (canAnimate) {
-    buildLoops();
-    if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ es.forEach(function(e){ setOnScreen(e.isIntersecting && !document.hidden); }); }, { threshold: .2 }).observe(motion);
-    else setOnScreen(true);
-    document.addEventListener('visibilitychange', function(){ if (document.hidden) setOnScreen(false); else { var r = motion.getBoundingClientRect(); setOnScreen(r.bottom > 0 && r.top < innerHeight); } });
-    var resizeTimer; window.addEventListener('resize', function(){ clearTimeout(resizeTimer); resizeTimer = setTimeout(buildLoops, 150); });
+    dots.forEach(function(d){ d.style.left = '2px'; });
+    var played = false;
+    function firstPlay(){ if (played) return; played = true; run(); }
+    if ('IntersectionObserver' in window) { var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { firstPlay(); io.disconnect(); } }); }, { threshold: .4 }); io.observe(motion); }
+    else firstPlay();
+    replay.addEventListener('click', rewindThenRun);
 
     dots.forEach(function(d){
       var startX = 0, startLeft = 0, dragging = false, held = false;
       d.addEventListener('pointerdown', function(ev){
-        if (d._snap) return;
+        if (busy) return;
         held = true; dragging = false; startX = ev.clientX;
         startLeft = d.getBoundingClientRect().left - d.parentElement.getBoundingClientRect().left;
-        d._loop.pause(); d.setPointerCapture(ev.pointerId); ev.preventDefault();
+        settle(d, startLeft); d.setPointerCapture(ev.pointerId); ev.preventDefault();
       });
       d.addEventListener('pointermove', function(ev){
         if (!held) return;
         var dx = ev.clientX - startX;
-        if (!dragging) { if (Math.abs(dx) < 4) return; dragging = true; d.classList.add('held'); d._loop.cancel(); d.style.left = startLeft + 'px'; }
+        if (!dragging) { if (Math.abs(dx) < 4) return; dragging = true; d.classList.add('held'); }
         d.style.left = Math.max(2, Math.min(endOf(d), startLeft + dx)) + 'px';
       });
       function release(){
         if (!held) return; held = false;
-        if (!dragging) { d._loop.play(); return; }
+        if (!dragging) return;
         dragging = false; d.classList.remove('held');
         var from = parseFloat(d.style.left) || 2, to = endOf(d), pull = Math.max(0, to - from);
-        var dur = 160 + Math.min(260, pull * 0.5);
-        var snap = d.animate([{ left: from + 'px' }, { left: to + 'px' }], { duration: dur, easing: spring, fill: 'forwards' });
-        d._snap = snap;
-        snap.onfinish = function(){ d.style.left = ''; snap.cancel(); d._snap = null; loopFor(d, d._dur + 1); if (onScreen) d._loop.play(); };
+        var a = d.animate([{ left: from + 'px' }, { left: to + 'px' }], { duration: 160 + Math.min(260, pull * 0.5), easing: spring, fill: 'both' });
+        d._anim = a; a.onfinish = function(){ settle(d, to); };
       }
       d.addEventListener('pointerup', release); d.addEventListener('pointercancel', release);
     });
-  }
+    window.addEventListener('resize', function(){ if (!busy) dots.forEach(function(d){ if (parseFloat(d.style.left) > 2) settle(d, endOf(d)); }); });
+  } else { replay.hidden = true; }
 
   document.querySelectorAll('.copy').forEach(function(btn){
     btn.addEventListener('click', function(){

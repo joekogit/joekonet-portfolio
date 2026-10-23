@@ -147,6 +147,10 @@ td:first-child { white-space: nowrap; }
 .motion .dot { position: absolute; left: 2px; top: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); cursor: grab; touch-action: none; transition: transform var(--dur-fast) var(--ease-spring); }
 .motion .dot::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; }
 .motion .dot.held { cursor: grabbing; transform: scale(1.2); }
+.mini { all: unset; cursor: pointer; font-family: var(--mono); font-size: var(--t-1); color: var(--accent); border: 1px solid var(--rule); padding: 5px 10px; border-radius: var(--radius); transition: border-color var(--dur-fast), opacity var(--dur-fast); }
+.mini:hover { border-color: var(--accent); }
+.mini:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mini[disabled] { opacity: .5; cursor: default; }
 @media (max-width: 560px) { .motion .track { grid-template-columns: 1fr; gap: 6px; } }
 
 /* Releases */
@@ -179,7 +183,7 @@ footer.colophon a:hover { color: var(--accent); border-color: var(--accent); }
   .card .photo { animation: pop 700ms var(--ease-spring) both .35s; }
   @keyframes pop { from { transform: scale(.7); opacity: 0; } }
 }
-@media (prefers-reduced-motion: reduce) { .motion .dot { left: calc(100% - 20px); cursor: default; } * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .motion .dot { left: calc(100% - 20px); cursor: default; } .mini#replay { display: none; } * { transition: none !important; } }
 
 @media (min-width: 960px) {
   .shell { grid-template-columns: 220px 1fr; }
