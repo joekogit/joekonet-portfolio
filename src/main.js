@@ -64,10 +64,9 @@
   new MutationObserver(refresh).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
   // Motion. One run: the dots set off a beat apart, each at its own token duration and curve, and rest at
-  // the end. It plays once when it first comes into view, and again on Replay. Drag a dot back and let go
-  // and it springs home. Nothing loops on its own.
+  // the end. It plays once when it first comes into view, and again on Replay. Nothing loops on its own.
   var motion = document.getElementById('motion-demo'), dots = Array.prototype.slice.call(motion.querySelectorAll('.dot')), replay = document.getElementById('replay');
-  var STAGGER = 110, easeOut = 'cubic-bezier(.2,.7,.2,1)', spring = 'cubic-bezier(.3,1.5,.4,1)';
+  var STAGGER = 110, easeOut = 'cubic-bezier(.2,.7,.2,1)';
   var canAnimate = !reduce && !!dots[0].animate, busy = false;
   function endOf(d){ return d.parentElement.clientWidth - 20; }
   function settle(d, left){ d.style.left = left + 'px'; if (d._anim) { d._anim.cancel(); d._anim = null; } }
@@ -100,31 +99,6 @@
     else firstPlay();
     replay.addEventListener('click', rewindThenRun);
 
-    dots.forEach(function(d){
-      var startX = 0, startLeft = 0, dragging = false, held = false;
-      d.addEventListener('pointerdown', function(ev){
-        if (busy) return;
-        held = true; dragging = false; startX = ev.clientX;
-        startLeft = d.getBoundingClientRect().left - d.parentElement.getBoundingClientRect().left;
-        settle(d, startLeft); d.setPointerCapture(ev.pointerId); ev.preventDefault();
-      });
-      d.addEventListener('pointermove', function(ev){
-        if (!held) return;
-        var dx = ev.clientX - startX;
-        if (!dragging) { if (Math.abs(dx) < 4) return; dragging = true; d.classList.add('held'); }
-        d.style.left = Math.max(2, Math.min(endOf(d), startLeft + dx)) + 'px';
-      });
-      function release(){
-        if (!held) return; held = false;
-        if (!dragging) return;
-        dragging = false; d.classList.remove('held');
-        var from = parseFloat(d.style.left) || 2, to = endOf(d), pull = Math.max(0, to - from);
-        var a = d.animate([{ left: from + 'px' }, { left: to + 'px' }], { duration: 160 + Math.min(260, pull * 0.5), easing: spring, fill: 'both' });
-        d._anim = a; a.onfinish = function(){ settle(d, to); };
-      }
-      d.addEventListener('pointerup', release); d.addEventListener('pointercancel', release);
-    });
-    window.addEventListener('resize', function(){ if (!busy) dots.forEach(function(d){ if (parseFloat(d.style.left) > 2) settle(d, endOf(d)); }); });
   } else { replay.hidden = true; }
 
   document.querySelectorAll('.copy').forEach(function(btn){
