@@ -28,7 +28,8 @@ code, .mono { font-family: var(--mono); font-size: .86em; }
 .docnav { border-bottom: 1px solid var(--rule); background: var(--bg); padding-block: var(--s-4); padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; }
 .docnav .brand { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .docnav .ver { font-family: var(--mono); font-size: var(--t-1); color: var(--muted); }
-.docnav ul { list-style: none; margin: var(--s-3) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px 16px; font-size: var(--t-2); }
+.docnav ul { list-style: none; margin: var(--s-3) 0 0; padding: 0 28px 0 0; display: flex; flex-wrap: nowrap; gap: 0 18px; font-size: var(--t-2); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+.docnav ul::-webkit-scrollbar { display: none; }
 .docnav a { color: var(--muted); white-space: nowrap; padding: 4px 0; border-bottom: 2px solid transparent; transition: color var(--dur-fast), border-color var(--dur-fast); }
 .docnav a.current, .docnav a:hover { color: var(--fg); border-color: var(--accent); }
 
@@ -172,13 +173,10 @@ footer.colophon a:hover { color: var(--accent); border-color: var(--accent); }
 @media (prefers-reduced-motion: reduce) { .motion.play .dot { animation: none; left: calc(100% - 20px); } * { transition: none !important; } }
 
 @media (min-width: 960px) {
-  :root { --t-1: 13px; --t-2: 15px; --t-3: 18px; --t-4: 22px; --t-5: 31px; --t-6: 44px; --t-7: 62px; }
-  .shell { grid-template-columns: 240px 1fr; }
-  .content { max-width: 1232px; }
-  .contact { max-width: 740px; }
+  .shell { grid-template-columns: 220px 1fr; }
   .docnav { position: sticky; top: env(safe-area-inset-top, 0px); height: 100vh; border-bottom: 0; border-right: 1px solid var(--rule); padding-block: var(--s-6); padding-right: var(--s-4); padding-left: max(24px, env(safe-area-inset-left, 0px)); }
   .docnav .brand { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .docnav ul { flex-direction: column; margin-top: var(--s-6); gap: 2px; }
+  .docnav ul { flex-direction: column; margin-top: var(--s-6); gap: 2px; padding: 0; overflow: visible; mask-image: none; -webkit-mask-image: none; }
   .docnav a { display: block; border-bottom: 0; border-left: 2px solid transparent; padding: 4px 10px; margin-left: -12px; }
   .docnav a.current, .docnav a:hover { border-color: var(--accent); }
   .content { padding-left: var(--s-8); padding-right: max(32px, env(safe-area-inset-right, 0px)); padding-block: var(--s-8); }
@@ -187,4 +185,12 @@ footer.colophon a:hover { color: var(--accent); border-color: var(--accent); }
   section.doc, .sub { scroll-margin-top: 24px; }
   section.doc { margin-bottom: var(--s-8); }
   .titleblock { margin-bottom: var(--s-7); }
+}
+
+/* Largest breakpoint: everything about a tenth bigger, including the column widths. */
+@media (min-width: 1440px) {
+  :root { --t-1: 13px; --t-2: 15px; --t-3: 18px; --t-4: 22px; --t-5: 31px; --t-6: 44px; --t-7: 62px; }
+  .shell { grid-template-columns: 240px 1fr; }
+  .content { max-width: 1232px; }
+  .contact { max-width: 740px; }
 }
