@@ -85,7 +85,7 @@
     
         <section class="doc reveal" id="playground" style="--i:4">
           <h2>At a glance</h2>
-          <p class="lead">These controls change the tokens for the whole page, not just the card. Drag the width and the card adapts on its own.</p>
+          <p class="lead">These controls change the tokens for the whole page, not just the card. <span id="widthhint">Drag the width and the card adapts on its own.</span></p>
           <div class="playground">
             <div class="controls">
               <div class="ctl"><span class="lbl">theme</span>
@@ -202,13 +202,12 @@
     
           <div class="sub" id="motion">
           <h3>Motion</h3>
-          <p class="lead">Three durations, two curves. If your system asks for reduced motion, nothing moves.</p>
+          <p class="lead">Three durations, two curves, each on its own loop. Drag a dot back and let go. If your system asks for reduced motion, nothing moves.</p>
           <div class="motion" id="motion-demo">
             <div class="track"><span>--dur-fast 150ms</span><div class="lane"><div class="dot" style="--d:150ms;--e:var(--ease-out)"></div></div><span>hover, press, focus</span></div>
             <div class="track"><span>--dur-base 250ms</span><div class="lane"><div class="dot" style="--d:250ms;--e:var(--ease-out)"></div></div><span>theme, radius, density</span></div>
             <div class="track"><span>--dur-slow 600ms</span><div class="lane"><div class="dot" style="--d:600ms;--e:var(--ease-out)"></div></div><span>width, page load</span></div>
             <div class="track"><span>--ease-spring</span><div class="lane"><div class="dot" style="--d:600ms;--e:var(--ease-spring)"></div></div><span>photo entrance, swatch hover</span></div>
-            <div><button type="button" class="mini" id="replay">Replay</button></div>
           </div>
           </div>
         </section>
