@@ -152,12 +152,14 @@ td:first-child { white-space: nowrap; }
 @media (max-width: 560px) { .motion .track { grid-template-columns: 1fr; gap: 6px; } }
 
 /* Releases */
-.rel { border-top: 1px solid var(--rule); }
+.rel .era { font-family: var(--display); font-size: var(--t-4); font-weight: 500; margin: var(--s-6) 0 0; padding-bottom: var(--s-2); border-bottom: 1px solid var(--rule); }
+.rel .era:first-child { margin-top: 0; }
+.rel article:has(+ .era) { border-bottom: 0; }
 .rel article { display: grid; grid-template-columns: 1fr; gap: 2px 20px; padding: var(--s-4) 0; border-bottom: 1px solid var(--rule); }
 .rel .v { font-family: var(--mono); font-size: var(--t-2); color: var(--accent); }
 .rel .v small { display: block; color: var(--muted); font-size: var(--t-1); margin-top: 2px; }
-.rel h3 { margin: 0; font-size: var(--t-3); font-weight: 700; }
-.rel h3 span { font-weight: 400; color: var(--muted); }
+.rel h4 { margin: 0; font-size: var(--t-3); font-weight: 700; }
+.rel h4 span { font-weight: 400; color: var(--muted); }
 .rel p { margin: 4px 0 0; font-size: var(--t-2); color: var(--muted); max-width: 64ch; }
 .rel details { margin-top: 8px; font-size: var(--t-2); }
 .rel summary { cursor: pointer; color: var(--accent); font-family: var(--mono); font-size: var(--t-1); list-style: none; display: inline-flex; gap: 8px; align-items: center; }
